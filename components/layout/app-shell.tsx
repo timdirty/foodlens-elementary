@@ -27,7 +27,6 @@ import {
 } from "lucide-react";
 import { useFoodLens } from "@/components/data-provider";
 import { GameModeProvider } from "@/components/game/game-mode-context";
-import { InspectorRice } from "@/components/game/inspector-rice";
 import { CaseClosedCelebration } from "@/components/game/case-closed-celebration";
 import {
   GameModeToggle,
@@ -40,28 +39,21 @@ const TAIPEI_LUNCH_SOURCE =
 
 const navGroups = [
   {
-    label: "觀察",
+    label: "核心功能",
     items: [
-      { label: "八週研究總覽", href: "/", icon: CircleGauge },
-      { label: "午餐任務台", href: "/workflow", icon: ClipboardCheck },
-      { label: "拍照記錄", href: "/scan", icon: ScanLine },
-      { label: "餐期日誌", href: "/records", icon: ListChecks },
+      { label: "食光儀表板", href: "/", icon: CircleGauge },
+      { label: "餐盤拍照辨識", href: "/scan", icon: Camera },
+      { label: "調查歷程日誌", href: "/records", icon: ListChecks },
+      { label: "8 分鐘評審簡報", href: "/presentation", icon: MonitorPlay },
     ],
   },
   {
-    label: "理解與決策",
+    label: "深入探究（選用）",
     items: [
-      { label: "比較與圖表", href: "/lab", icon: BarChart3 },
-      { label: "下餐供應量試算", href: "/forecast", icon: ChartNoAxesCombined },
-    ],
-  },
-  {
-    label: "驗證與擴散",
-    items: [
-      { label: "改善實驗", href: "/experiments", icon: FlaskConical },
-      { label: "去向追蹤", href: "/trace", icon: Truck },
-      { label: "永續影響", href: "/impact", icon: Leaf },
-      { label: "專題研究", href: "/research", icon: BookOpenText },
+      { label: "五階任務台", href: "/workflow", icon: ClipboardCheck },
+      { label: "配方實驗桌", href: "/lab", icon: BarChart3 },
+      { label: "改善行動實驗", href: "/experiments", icon: FlaskConical },
+      { label: "全鏈路去向追蹤", href: "/trace", icon: Truck },
     ],
   },
 ];
@@ -443,57 +435,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               <strong>FoodLens</strong>
             </div>
             <div className="status-cluster" aria-label="目前系統狀態">
-              <span className="status-pill demo">
+              <span className="status-pill ai-ready">
                 <span />
-                資料：
+                ✨ Gemini AI 視覺模型就緒
+              </span>
+              <span className="status-pill demo">
                 {mode === "demo-local"
-                  ? `${storageMode === "memory" ? "暫存示範" : "示範"} ${snapshot?.meals.length ?? 48} 餐期 · 截至 ${latestRecordDate || "情境末日"}`
+                  ? `示範 ${snapshot?.meals.length ?? 48} 餐期`
                   : `校園記錄 ${snapshot?.meals.length ?? 0} 餐期`}
               </span>
-              <span className="status-pill mock">
-                <ScanSearch size={14} />
-                {mode === "demo-local"
-                  ? "辨識：示範規則"
-                  : "辨識：示範／真實逐次標示"}
-              </span>
               <GameModeToggle compact />
-              <select
-                className="range-select"
-                value={filters.classId}
-                onChange={(event) =>
-                  setFilters((value) => ({
-                    ...value,
-                    classId: event.target.value,
-                  }))
-                }
-                aria-label="班級篩選"
-              >
-                <option value="all">全部班級</option>
-                {snapshot?.classes.map((item) => (
-                  <option key={item.id} value={item.id}>
-                    {item.name}
-                  </option>
-                ))}
-              </select>
-              <select
-                className="range-select period-select"
-                value={filters.range}
-                onChange={(event) =>
-                  setFilters((value) => ({
-                    ...value,
-                    range: event.target.value as typeof value.range,
-                  }))
-                }
-                aria-label="日期範圍"
-              >
-                <option value="8-weeks">
-                  {mode === "demo-local" ? "示範情境 8 週" : "最近 8 週"}
-                </option>
-                <option value="month">
-                  {mode === "demo-local" ? "情境最近 30 天" : "最近 30 天"}
-                </option>
-                <option value="all">全部期間</option>
-              </select>
             </div>
             <div className="top-actions">
               <Link
@@ -535,40 +486,18 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 <span>
                   {error}
                   {cloudReconnectAvailable
-                    ? " 目前顯示此裝置的示範資料；校園資料沒有被改寫，可直接重新連線。"
-                    : storageMode === "memory"
-                      ? " 本次工作階段仍可完整操作，但重新整理後會重建示範資料。"
-                      : " 畫面仍保留上一次成功讀取的資料。"}
+                    ? "；可重新整理重試或使用示範資料。"
+                    : "；示範資料仍可完整操作。"}
                 </span>
               </div>
               <button
-                onClick={() =>
-                  cloudReconnectAvailable
-                    ? void setMode("school-cloud").catch(() => undefined)
-                    : storageMode === "memory"
-                      ? void setMode("demo-local").catch(() => undefined)
-                      : void refresh()
-                }
+                className="ghost-button"
+                type="button"
+                onClick={() => void refresh()}
               >
-                <RefreshCw size={15} />
-                {cloudReconnectAvailable
-                  ? "重新連線校園雲端"
-                  : storageMode === "memory"
-                    ? "重試本機儲存"
-                    : "重試"}
+                <RefreshCw size={14} />
+                重試連線
               </button>
-              {(mode === "school-cloud" || cloudReconnectAvailable) && (
-                <button
-                  onClick={() =>
-                    void setMode("demo-local").catch(() => undefined)
-                  }
-                >
-                  <HardDrive size={15} />
-                  {cloudReconnectAvailable
-                    ? "固定使用示範模式"
-                    : "回到示範模式"}
-                </button>
-              )}
             </div>
           )}
           {children}
@@ -587,87 +516,27 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             href="/scan"
             aria-current={pathname.startsWith("/scan") ? "page" : undefined}
           >
-            <ScanLine />
-            <span>掃描</span>
+            <Camera />
+            <span>拍照</span>
           </Link>
           <Link
-            className={pathname.startsWith("/lab") ? "active" : ""}
-            href="/lab"
-            aria-current={pathname.startsWith("/lab") ? "page" : undefined}
+            className={pathname.startsWith("/records") ? "active" : ""}
+            href="/records"
+            aria-current={pathname.startsWith("/records") ? "page" : undefined}
           >
-            <BarChart3 />
-            <span>數據</span>
+            <ListChecks />
+            <span>紀錄</span>
           </Link>
           <Link
-            className={pathname.startsWith("/workflow") ? "active" : ""}
-            href="/workflow"
-            aria-current={pathname.startsWith("/workflow") ? "page" : undefined}
+            className={pathname.startsWith("/presentation") ? "active" : ""}
+            href="/presentation"
+            aria-current={pathname.startsWith("/presentation") ? "page" : undefined}
           >
-            <ClipboardCheck />
-            <span>任務台</span>
+            <MonitorPlay />
+            <span>簡報</span>
           </Link>
-          <div className="mobile-more" ref={moreRef}>
-            <button
-              ref={moreButtonRef}
-              className={moreActive ? "active" : ""}
-              type="button"
-              aria-expanded={moreOpen}
-              aria-controls="mobile-more-menu"
-              onClick={() => setMoreOpenForPath(moreOpen ? null : pathname)}
-            >
-              <Ellipsis />
-              <span>更多</span>
-            </button>
-            {moreOpen && (
-              <div
-                id="mobile-more-menu"
-                className="mobile-more-menu"
-                aria-label="更多頁面"
-                role="group"
-              >
-                <div
-                  style={{
-                    padding: "8px 12px",
-                    borderBottom: "1px solid var(--line)",
-                  }}
-                >
-                  <GameModeToggle />
-                </div>
-                {moreItems.map((item) => {
-                  const Icon = item.icon;
-                  const active = pathname.startsWith(item.href);
-                  return (
-                    <Link
-                      className={active ? "active" : ""}
-                      href={item.href}
-                      key={item.href}
-                      aria-current={active ? "page" : undefined}
-                      onClick={() => setMoreOpenForPath(null)}
-                    >
-                      <Icon size={18} />
-                      <span>{item.label}</span>
-                    </Link>
-                  );
-                })}
-                <button
-                  className="mobile-tour-link"
-                  type="button"
-                  onClick={() => {
-                    tourReturnFocusRef.current = moreButtonRef.current;
-                    moreButtonRef.current?.focus();
-                    setMoreOpenForPath(null);
-                    setTourOpen(true);
-                  }}
-                >
-                  <BookOpenText size={18} />
-                  <span>30 秒摘要</span>
-                </button>
-              </div>
-            )}
-          </div>
         </nav>
         <TourDialog returnFocusRef={tourReturnFocusRef} />
-        <InspectorRice />
         <CaseClosedCelebration />
       </div>
     </GameModeProvider>

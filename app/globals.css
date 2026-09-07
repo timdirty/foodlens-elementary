@@ -252,6 +252,19 @@ a {
   border-radius: 50%;
   box-shadow: 0 0 0 3px rgba(66, 161, 104, 0.12);
 }
+.status-pill.ai-ready {
+  color: #1b5e20;
+  border-color: #a5d6a7;
+  background: #e8f5e9;
+}
+.status-pill.ai-ready span {
+  width: 6px;
+  height: 6px;
+  background: #2e7d32;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+  display: inline-block;
+}
 .status-pill.mock {
   color: #92611d;
   border-color: #ecd4a7;

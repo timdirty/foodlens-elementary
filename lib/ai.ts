@@ -98,8 +98,14 @@ export class ServerFoodAnalysisProvider implements FoodAnalysisProvider {
       }),
     );
     formData.append("menuCandidates", JSON.stringify(safeCandidates));
+    const headers: Record<string, string> = {};
+    if (typeof window !== "undefined") {
+      const storedKey = window.localStorage.getItem("foodlens_gemini_api_key");
+      if (storedKey) headers["x-gemini-api-key"] = storedKey.trim();
+    }
     const response = await fetch("/api/ai/analyze", {
       method: "POST",
+      headers,
       body: formData,
     });
     const payload = (await response.json()) as unknown;

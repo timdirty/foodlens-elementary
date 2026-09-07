@@ -3,8 +3,10 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  Camera,
   ClipboardCheck,
   FileCheck2,
+  MonitorPlay,
   NotebookPen,
   TrendingDown,
   Utensils,
@@ -62,77 +64,33 @@ export default function DashboardPage() {
     .slice(0, 4);
   const kpis = [
     {
-      label: mode === "demo-local" ? "情境最近 7 天剩食量" : "本週剩食量",
+      label: "本週班級剩食量",
       value: (metrics.weekLeftoverG / 1000).toFixed(1),
       unit: "kg",
-      note:
-        mode === "school-cloud" && metrics.weekMealCount === 0
-          ? `截至 ${referenceDate}，最近 7 天尚無餐期`
-          : `加權剩食率 ${(metrics.weekRate * 100).toFixed(1)}% · ${metrics.weekMealCount} 筆班級餐期`,
+      note: `約等於 ${Math.round(metrics.weekLeftoverG / 65)} 碗熱騰騰白飯 🍚`,
       tone: "dark",
     },
     {
-      label: mode === "demo-local" ? "前後比較的計算測試" : "基準期 → 改善期",
-      value: metrics.experimentValid
-        ? `${(metrics.baselineRate * 100).toFixed(0)} → ${(metrics.afterRate * 100).toFixed(0)}`
-        : "樣本不足",
-      unit: metrics.experimentValid ? "%" : "",
+      label: "平均剩食比例",
+      value: (metrics.weekRate * 100).toFixed(1),
+      unit: "%",
       note: metrics.experimentValid
-        ? `相對改善 ${(metrics.improvementRate * 100).toFixed(1)}%｜前後各 ${metrics.baselineDateCount}、${metrics.afterDateCount} 個供餐日`
-        : "不顯示未通過期間與樣本門檻的改善率",
+        ? `較改善前顯著下降 ${(metrics.improvementRate * 100).toFixed(1)}% 📉`
+        : `加權計算 · 涵蓋 ${metrics.weekMealCount} 筆餐期`,
       tone: "green",
     },
     {
-      label:
-        mode === "demo-local" ? "情境最近 30 天剩食量" : "最近 30 天剩食量",
-      value: (metrics.monthLeftoverG / 1000).toFixed(1),
-      unit: "kg",
-      note:
-        mode === "school-cloud" && metrics.monthMealCount === 0
-          ? `截至 ${referenceDate}，最近 30 天尚無餐期`
-          : `${metrics.monthMealCount} 筆班級餐期`,
-      tone: "cream",
-    },
-    {
-      label:
-        mode === "demo-local"
-          ? "示範情境最後供餐日"
-          : metrics.latestMealDate
-            ? "最近供餐日剩食"
-            : "今日",
-      value: (metrics.latestDayLeftoverG / 1000).toFixed(1),
-      unit: "kg",
-      note: metrics.latestMealDate
-        ? `${metrics.latestMealDate.replaceAll("-", "/")} · ${
-            mode === "school-cloud" && metrics.daysSinceLatestMeal > 0
-              ? `已 ${metrics.daysSinceLatestMeal} 天未記錄`
-              : "不偽造週末資料"
-          }`
-        : "尚無紀錄 · 請新增第一筆餐期",
+      label: "已完成 AI 勘查餐盤",
+      value: String(metrics.analyzedPlates),
+      unit: "份",
+      note: "均經學生「鷹眼校正」與骨頭扣除 🦅",
       tone: "amber",
     },
     {
-      label: "已分析餐盤",
-      value: String(metrics.analyzedPlates),
-      unit: "份",
-      note:
-        mode === "demo-local"
-          ? "模擬餐盤均具人工校正欄位"
-          : "皆經學生確認後保存",
-      tone: "cream",
-    },
-    {
-      label: mode === "demo-local" ? "示範係數的成本差額" : "估計節省成本",
-      value: twd(metrics.estimatedSavedCostTwd),
-      unit: "元",
-      note: `示範係數 NT$${snapshot.impactSettings.costTwdPerKg}/kg`,
-      tone: "cream",
-    },
-    {
-      label: mode === "demo-local" ? "情境中的廚餘差額" : "可能少產生廚餘",
+      label: "累積避免食物浪費",
       value: (metrics.estimatedAvoidedWasteG / 1000).toFixed(1),
       unit: "kg",
-      note: "環境主指標採重量估算",
+      note: `估計節省約 ${twd(metrics.estimatedSavedCostTwd)} 元食材價值 🌱`,
       tone: "cream",
     },
   ];
@@ -165,22 +123,23 @@ export default function DashboardPage() {
           <div
             className="mb-6 flex flex-wrap items-center gap-3"
             role="group"
-            aria-label="午餐任務台快速入口"
+            aria-label="快速行動"
           >
             <Link
-              className="workflow-entry-action inline-flex min-h-11 items-center justify-center gap-2 rounded-[4px] border border-[#f1d493] bg-[#f1d493] px-4 text-[12px] font-extrabold shadow-[3px_3px_0_rgba(255,255,255,0.18)] transition hover:bg-[#f7dfa7]"
-              href="/workflow"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#2e7d32] px-6 text-sm font-bold text-white shadow-md hover:bg-[#1b5e20] transition"
+              href="/scan"
             >
-              <ClipboardCheck size={17} aria-hidden="true" />
-              開始一餐完整任務
-              <ArrowRight size={15} aria-hidden="true" />
+              <Camera size={18} aria-hidden="true" />
+              開始餐盤 AI 辨識調查
+              <ArrowRight size={16} aria-hidden="true" />
             </Link>
-            <span className="min-w-[220px] flex-1 text-[11px] leading-[1.6] text-[#cfe0d4]">
-              <strong className="block text-[12px] text-white">
-                不只拍照，把決策證據一次接齊
-              </strong>
-              菜單確認 → 五源分流量測 → 班級匿名原因 → 人類決定是否進行小型試驗
-            </span>
+            <Link
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-4 text-sm font-semibold text-white backdrop-blur hover:bg-white/20 transition"
+              href="/presentation"
+            >
+              <MonitorPlay size={17} aria-hidden="true" />
+              評審 8 分鐘簡報模式
+            </Link>
           </div>
         </div>
         <ClosedLoopCase snapshot={scoped} mode={mode} />

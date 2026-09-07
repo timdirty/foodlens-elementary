@@ -210,7 +210,7 @@ function ScanWorkspace({
   const [corrections, setCorrections] = useState<AiDetectionInput[]>([]);
   const [humanChecked, setHumanChecked] = useState(false);
   const [saved, setSaved] = useState<{ mealId: string; scanId: string }>();
-  const [analysisMode, setAnalysisMode] = useState<"mock" | "real">("mock");
+  const [analysisMode, setAnalysisMode] = useState<"mock" | "real">("real");
   const [analysisError, setAnalysisError] = useState<string>();
   const [analysisMenuContext, setAnalysisMenuContext] = useState<
     ConfirmedPlateMenuContext | null | undefined
@@ -1367,25 +1367,64 @@ function ScanWorkspace({
               </>
             )}
             <div className="analysis-mode">
-              <span>辨識方式</span>
+              <span>辨識模型</span>
               <button
-                className={analysisMode === "mock" ? "active" : ""}
-                onClick={() => {
-                  markDraftDirty();
-                  setAnalysisMode("mock");
-                }}
-              >
-                示範辨識（免 Key）
-              </button>
-              <button
-                disabled={mode !== "school-cloud"}
+                type="button"
                 className={analysisMode === "real" ? "active" : ""}
                 onClick={() => {
                   markDraftDirty();
                   setAnalysisMode("real");
                 }}
               >
-                真實模型（需教師登入）
+                ✨ Gemini AI（真實視覺辨識）
+              </button>
+              <button
+                type="button"
+                className={analysisMode === "mock" ? "active" : ""}
+                onClick={() => {
+                  markDraftDirty();
+                  setAnalysisMode("mock");
+                }}
+              >
+                示範情境（離線展示）
+              </button>
+            </div>
+            <div className="mt-2.5 flex items-center justify-between p-2 rounded bg-[#f6faf6] border border-[#c8e6c9] text-xs">
+              <span className="text-[#2e7d32] font-semibold flex items-center gap-1">
+                <span>✨</span>
+                {typeof window !== "undefined" &&
+                window.localStorage.getItem("foodlens_gemini_api_key")
+                  ? "已載入自訂 Gemini API Key"
+                  : "Google Gemini 2.0 Flash 多模態辨識"}
+              </span>
+              <button
+                type="button"
+                className="px-2 py-0.5 rounded bg-white border border-[#81c784] text-[#2e7d32] font-bold hover:bg-[#c8e6c9] transition"
+                onClick={() => {
+                  const current =
+                    window.localStorage.getItem("foodlens_gemini_api_key") ||
+                    "";
+                  const input = window.prompt(
+                    "請輸入 Google Gemini API Key（可至 aistudio.google.com 免費取得；留空則使用系統預設）：",
+                    current,
+                  );
+                  if (input !== null) {
+                    if (input.trim()) {
+                      window.localStorage.setItem(
+                        "foodlens_gemini_api_key",
+                        input.trim(),
+                      );
+                      toast.success("Gemini API Key 已儲存至瀏覽器！");
+                    } else {
+                      window.localStorage.removeItem(
+                        "foodlens_gemini_api_key",
+                      );
+                      toast.info("已清除自訂 Key，將使用系統環境設定。");
+                    }
+                  }
+                }}
+              >
+                🔑 自訂 Key
               </button>
             </div>
           </Panel>
