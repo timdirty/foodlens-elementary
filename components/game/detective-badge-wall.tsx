@@ -17,14 +17,17 @@ export function DetectiveBadgeWall({ onClose }: { onClose: () => void }) {
     >
       <div className="bg-white border-2 border-amber-400 rounded-3xl max-w-xl w-full shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
         {/* Header */}
-        <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 px-6 py-4 text-white flex items-center justify-between">
+        <div className="bg-[#174b36] px-6 py-4 text-white flex items-center justify-between border-b border-[#246248]">
           <div className="flex items-center gap-2.5">
-            <Trophy className="w-6 h-6 text-amber-200" />
+            <Trophy className="w-6 h-6 text-[#f1d493]" />
             <div>
-              <h2 id="badge-wall-title" className="text-lg font-black tracking-wide">
+              <h2
+                id="badge-wall-title"
+                className="text-base sm:text-lg font-black tracking-wide"
+              >
                 食光偵探所 · 榮譽勳章館
               </h2>
-              <p className="text-xs text-amber-100 font-medium">
+              <p className="text-xs text-[#cfe0d4] font-medium">
                 收集破案勳章，見證每一次守護午餐的用心！
               </p>
             </div>
@@ -86,7 +89,8 @@ export function DetectiveBadgeWall({ onClose }: { onClose: () => void }) {
                 </h3>
                 {selectedBadge.unlocked ? (
                   <span className="text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 px-2 py-0.5 rounded-full flex items-center gap-1">
-                    <Sparkles className="w-2.5 h-2.5" /> 已解鎖 ({selectedBadge.unlockedAt})
+                    <Sparkles className="w-2.5 h-2.5" /> 已解鎖 (
+                    {selectedBadge.unlockedAt})
                   </span>
                 ) : (
                   <span className="text-[10px] font-bold bg-slate-200 text-slate-600 px-2 py-0.5 rounded-full flex items-center gap-1">
@@ -107,7 +111,8 @@ export function DetectiveBadgeWall({ onClose }: { onClose: () => void }) {
         {/* Footer */}
         <div className="bg-slate-50 px-6 py-3 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 font-medium">
           <span>
-            當前階級：<strong className="text-amber-700">{stats.rankTitle}</strong>
+            當前階級：
+            <strong className="text-amber-700">{stats.rankTitle}</strong>
           </span>
           <button
             onClick={onClose}

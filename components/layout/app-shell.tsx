@@ -29,7 +29,10 @@ import { useFoodLens } from "@/components/data-provider";
 import { GameModeProvider } from "@/components/game/game-mode-context";
 import { InspectorRice } from "@/components/game/inspector-rice";
 import { CaseClosedCelebration } from "@/components/game/case-closed-celebration";
-import { GameModeToggle } from "@/components/game/game-toggle";
+import {
+  GameModeToggle,
+  SidebarModeToggle,
+} from "@/components/game/game-toggle";
 import tourStyles from "./tour-story.module.css";
 
 const TAIPEI_LUNCH_SOURCE =
@@ -379,283 +382,294 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <GameModeProvider>
       <div className="app-shell">
-      <a className="skip-link" href="#main-content">
-        跳到主要內容
-      </a>
-      <aside className="sidebar">
-        <Link className="brand" href="/" aria-label="FoodLens 食光偵探首頁">
-          <BrandMark />
-          <span>
-            <strong>FoodLens</strong>
-            <small>食光偵探</small>
-          </span>
-        </Link>
-        <nav className="side-nav" aria-label="主要導覽">
-          {navGroups.map((group) => (
-            <div className="nav-group" key={group.label}>
-              <p>{group.label}</p>
-              {group.items.map((item) => {
-                const Icon = item.icon;
-                const active =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
-                return (
-                  <Link
-                    className={`nav-item${active ? " active" : ""}`}
-                    href={item.href}
-                    key={item.href}
-                    aria-current={active ? "page" : undefined}
-                  >
-                    <Icon size={18} />
-                    <span>{item.label}</span>
-                    {active && <span className="active-dot" />}
-                  </Link>
-                );
-              })}
-            </div>
-          ))}
-        </nav>
-        <div className="sidebar-foot">
-          <Link
-            className={
-              pathname.startsWith("/admin")
-                ? "font-bold text-[var(--green-dark)]"
-                : ""
-            }
-            href="/admin"
-          >
-            <Settings2 size={18} />
-            教師管理
-          </Link>
-          <p>科技助力社會創新</p>
-          <span>臺北市 115 學年度</span>
-        </div>
-      </aside>
-      <main className="main-content" id="main-content" tabIndex={-1}>
-        <header className="topbar">
-          <div className="mobile-brand">
+        <a className="skip-link" href="#main-content">
+          跳到主要內容
+        </a>
+        <aside className="sidebar">
+          <Link className="brand" href="/" aria-label="FoodLens 食光偵探首頁">
             <BrandMark />
-            <strong>FoodLens</strong>
-          </div>
-          <div className="status-cluster" aria-label="目前系統狀態">
-            <span className="status-pill demo">
-              <span />
-              資料：
-              {mode === "demo-local"
-                ? `${storageMode === "memory" ? "暫存示範" : "示範"} ${snapshot?.meals.length ?? 48} 餐期 · 截至 ${latestRecordDate || "情境末日"}`
-                : `校園記錄 ${snapshot?.meals.length ?? 0} 餐期`}
+            <span>
+              <strong>FoodLens</strong>
+              <small>食光偵探</small>
             </span>
-            <span className="status-pill mock">
-              <ScanSearch size={14} />
-              {mode === "demo-local"
-                ? "辨識：示範規則"
-                : "辨識：示範／真實逐次標示"}
-            </span>
-            <select
-              className="range-select"
-              value={filters.classId}
-              onChange={(event) =>
-                setFilters((value) => ({
-                  ...value,
-                  classId: event.target.value,
-                }))
-              }
-              aria-label="班級篩選"
-            >
-              <option value="all">全部班級</option>
-              {snapshot?.classes.map((item) => (
-                <option key={item.id} value={item.id}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
-            <select
-              className="range-select period-select"
-              value={filters.range}
-              onChange={(event) =>
-                setFilters((value) => ({
-                  ...value,
-                  range: event.target.value as typeof value.range,
-                }))
-              }
-              aria-label="日期範圍"
-            >
-              <option value="8-weeks">
-                {mode === "demo-local" ? "示範情境 8 週" : "最近 8 週"}
-              </option>
-              <option value="month">
-                {mode === "demo-local" ? "情境最近 30 天" : "最近 30 天"}
-              </option>
-              <option value="all">全部期間</option>
-            </select>
-          </div>
-          <div className="top-actions">
-            <GameModeToggle />
+          </Link>
+          <nav className="side-nav" aria-label="主要導覽">
+            {navGroups.map((group) => (
+              <div className="nav-group" key={group.label}>
+                <p>{group.label}</p>
+                {group.items.map((item) => {
+                  const Icon = item.icon;
+                  const active =
+                    item.href === "/"
+                      ? pathname === "/"
+                      : pathname.startsWith(item.href);
+                  return (
+                    <Link
+                      className={`nav-item${active ? " active" : ""}`}
+                      href={item.href}
+                      key={item.href}
+                      aria-current={active ? "page" : undefined}
+                    >
+                      <Icon size={18} />
+                      <span>{item.label}</span>
+                      {active && <span className="active-dot" />}
+                    </Link>
+                  );
+                })}
+              </div>
+            ))}
+          </nav>
+          <SidebarModeToggle />
+          <div className="sidebar-foot">
             <Link
-              className="ghost-button presentation-button"
-              href="/presentation"
-            >
-              <MonitorPlay size={16} />
-              <span>8 分鐘簡報</span>
-            </Link>
-            <button
-              ref={tourButtonRef}
-              className="ghost-button tour-button"
-              type="button"
-              onClick={(event) => {
-                tourReturnFocusRef.current = event.currentTarget;
-                setTourOpen(true);
-              }}
-            >
-              <BookOpenText size={16} />
-              <span>30 秒研究摘要</span>
-            </button>
-            <Link className="primary-button" href="/scan">
-              <Camera size={17} />
-              新增餐盤記錄
-            </Link>
-          </div>
-        </header>
-        {error && snapshot && (
-          <div className="data-error-banner" role="alert">
-            <AlertTriangle size={18} />
-            <div>
-              <strong>
-                {cloudReconnectAvailable
-                  ? "校園雲端暫時無法連線"
-                  : storageMode === "memory"
-                    ? "已切換為暫存示範"
-                    : "新資料暫時無法同步"}
-              </strong>
-              <span>
-                {error}
-                {cloudReconnectAvailable
-                  ? " 目前顯示此裝置的示範資料；校園資料沒有被改寫，可直接重新連線。"
-                  : storageMode === "memory"
-                    ? " 本次工作階段仍可完整操作，但重新整理後會重建示範資料。"
-                    : " 畫面仍保留上一次成功讀取的資料。"}
-              </span>
-            </div>
-            <button
-              onClick={() =>
-                cloudReconnectAvailable
-                  ? void setMode("school-cloud").catch(() => undefined)
-                  : storageMode === "memory"
-                    ? void setMode("demo-local").catch(() => undefined)
-                    : void refresh()
+              className={
+                pathname.startsWith("/admin")
+                  ? "font-bold text-[var(--green-dark)]"
+                  : ""
               }
+              href="/admin"
             >
-              <RefreshCw size={15} />
-              {cloudReconnectAvailable
-                ? "重新連線校園雲端"
-                : storageMode === "memory"
-                  ? "重試本機儲存"
-                  : "重試"}
-            </button>
-            {(mode === "school-cloud" || cloudReconnectAvailable) && (
-              <button
-                onClick={() =>
-                  void setMode("demo-local").catch(() => undefined)
-                }
-              >
-                <HardDrive size={15} />
-                {cloudReconnectAvailable ? "固定使用示範模式" : "回到示範模式"}
-              </button>
-            )}
+              <Settings2 size={18} />
+              教師管理
+            </Link>
+            <p>科技助力社會創新</p>
+            <span>臺北市 115 學年度</span>
           </div>
-        )}
-        {children}
-      </main>
-      <nav className="mobile-nav" aria-label="手機主要導覽">
-        <Link
-          className={pathname === "/" ? "active" : ""}
-          href="/"
-          aria-current={pathname === "/" ? "page" : undefined}
-        >
-          <CircleGauge />
-          <span>首頁</span>
-        </Link>
-        <Link
-          className={pathname.startsWith("/scan") ? "active" : ""}
-          href="/scan"
-          aria-current={pathname.startsWith("/scan") ? "page" : undefined}
-        >
-          <ScanLine />
-          <span>掃描</span>
-        </Link>
-        <Link
-          className={pathname.startsWith("/lab") ? "active" : ""}
-          href="/lab"
-          aria-current={pathname.startsWith("/lab") ? "page" : undefined}
-        >
-          <BarChart3 />
-          <span>數據</span>
-        </Link>
-        <Link
-          className={pathname.startsWith("/workflow") ? "active" : ""}
-          href="/workflow"
-          aria-current={pathname.startsWith("/workflow") ? "page" : undefined}
-        >
-          <ClipboardCheck />
-          <span>任務台</span>
-        </Link>
-        <div className="mobile-more" ref={moreRef}>
-          <button
-            ref={moreButtonRef}
-            className={moreActive ? "active" : ""}
-            type="button"
-            aria-expanded={moreOpen}
-            aria-controls="mobile-more-menu"
-            onClick={() => setMoreOpenForPath(moreOpen ? null : pathname)}
-          >
-            <Ellipsis />
-            <span>更多</span>
-          </button>
-          {moreOpen && (
-            <div
-              id="mobile-more-menu"
-              className="mobile-more-menu"
-              aria-label="更多頁面"
-              role="group"
-            >
-              {moreItems.map((item) => {
-                const Icon = item.icon;
-                const active = pathname.startsWith(item.href);
-                return (
-                  <Link
-                    className={active ? "active" : ""}
-                    href={item.href}
-                    key={item.href}
-                    aria-current={active ? "page" : undefined}
-                    onClick={() => setMoreOpenForPath(null)}
-                  >
-                    <Icon size={18} />
-                    <span>{item.label}</span>
-                  </Link>
-                );
-              })}
+        </aside>
+        <main className="main-content" id="main-content" tabIndex={-1}>
+          <header className="topbar">
+            <div className="mobile-brand">
+              <BrandMark />
+              <strong>FoodLens</strong>
+            </div>
+            <div className="status-cluster" aria-label="目前系統狀態">
+              <span className="status-pill demo">
+                <span />
+                資料：
+                {mode === "demo-local"
+                  ? `${storageMode === "memory" ? "暫存示範" : "示範"} ${snapshot?.meals.length ?? 48} 餐期 · 截至 ${latestRecordDate || "情境末日"}`
+                  : `校園記錄 ${snapshot?.meals.length ?? 0} 餐期`}
+              </span>
+              <span className="status-pill mock">
+                <ScanSearch size={14} />
+                {mode === "demo-local"
+                  ? "辨識：示範規則"
+                  : "辨識：示範／真實逐次標示"}
+              </span>
+              <GameModeToggle compact />
+              <select
+                className="range-select"
+                value={filters.classId}
+                onChange={(event) =>
+                  setFilters((value) => ({
+                    ...value,
+                    classId: event.target.value,
+                  }))
+                }
+                aria-label="班級篩選"
+              >
+                <option value="all">全部班級</option>
+                {snapshot?.classes.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+              <select
+                className="range-select period-select"
+                value={filters.range}
+                onChange={(event) =>
+                  setFilters((value) => ({
+                    ...value,
+                    range: event.target.value as typeof value.range,
+                  }))
+                }
+                aria-label="日期範圍"
+              >
+                <option value="8-weeks">
+                  {mode === "demo-local" ? "示範情境 8 週" : "最近 8 週"}
+                </option>
+                <option value="month">
+                  {mode === "demo-local" ? "情境最近 30 天" : "最近 30 天"}
+                </option>
+                <option value="all">全部期間</option>
+              </select>
+            </div>
+            <div className="top-actions">
+              <Link
+                className="ghost-button presentation-button"
+                href="/presentation"
+              >
+                <MonitorPlay size={16} />
+                <span>8 分鐘簡報</span>
+              </Link>
               <button
-                className="mobile-tour-link"
+                ref={tourButtonRef}
+                className="ghost-button tour-button"
                 type="button"
-                onClick={() => {
-                  tourReturnFocusRef.current = moreButtonRef.current;
-                  moreButtonRef.current?.focus();
-                  setMoreOpenForPath(null);
+                onClick={(event) => {
+                  tourReturnFocusRef.current = event.currentTarget;
                   setTourOpen(true);
                 }}
               >
-                <BookOpenText size={18} />
-                <span>30 秒摘要</span>
+                <BookOpenText size={16} />
+                <span>30 秒研究摘要</span>
               </button>
+              <Link className="primary-button" href="/scan">
+                <Camera size={17} />
+                新增餐盤記錄
+              </Link>
+            </div>
+          </header>
+          {error && snapshot && (
+            <div className="data-error-banner" role="alert">
+              <AlertTriangle size={18} />
+              <div>
+                <strong>
+                  {cloudReconnectAvailable
+                    ? "校園雲端暫時無法連線"
+                    : storageMode === "memory"
+                      ? "已切換為暫存示範"
+                      : "新資料暫時無法同步"}
+                </strong>
+                <span>
+                  {error}
+                  {cloudReconnectAvailable
+                    ? " 目前顯示此裝置的示範資料；校園資料沒有被改寫，可直接重新連線。"
+                    : storageMode === "memory"
+                      ? " 本次工作階段仍可完整操作，但重新整理後會重建示範資料。"
+                      : " 畫面仍保留上一次成功讀取的資料。"}
+                </span>
+              </div>
+              <button
+                onClick={() =>
+                  cloudReconnectAvailable
+                    ? void setMode("school-cloud").catch(() => undefined)
+                    : storageMode === "memory"
+                      ? void setMode("demo-local").catch(() => undefined)
+                      : void refresh()
+                }
+              >
+                <RefreshCw size={15} />
+                {cloudReconnectAvailable
+                  ? "重新連線校園雲端"
+                  : storageMode === "memory"
+                    ? "重試本機儲存"
+                    : "重試"}
+              </button>
+              {(mode === "school-cloud" || cloudReconnectAvailable) && (
+                <button
+                  onClick={() =>
+                    void setMode("demo-local").catch(() => undefined)
+                  }
+                >
+                  <HardDrive size={15} />
+                  {cloudReconnectAvailable
+                    ? "固定使用示範模式"
+                    : "回到示範模式"}
+                </button>
+              )}
             </div>
           )}
-        </div>
-      </nav>
-      <TourDialog returnFocusRef={tourReturnFocusRef} />
-      <InspectorRice />
-      <CaseClosedCelebration />
-    </div>
-  </GameModeProvider>
-);
+          {children}
+        </main>
+        <nav className="mobile-nav" aria-label="手機主要導覽">
+          <Link
+            className={pathname === "/" ? "active" : ""}
+            href="/"
+            aria-current={pathname === "/" ? "page" : undefined}
+          >
+            <CircleGauge />
+            <span>首頁</span>
+          </Link>
+          <Link
+            className={pathname.startsWith("/scan") ? "active" : ""}
+            href="/scan"
+            aria-current={pathname.startsWith("/scan") ? "page" : undefined}
+          >
+            <ScanLine />
+            <span>掃描</span>
+          </Link>
+          <Link
+            className={pathname.startsWith("/lab") ? "active" : ""}
+            href="/lab"
+            aria-current={pathname.startsWith("/lab") ? "page" : undefined}
+          >
+            <BarChart3 />
+            <span>數據</span>
+          </Link>
+          <Link
+            className={pathname.startsWith("/workflow") ? "active" : ""}
+            href="/workflow"
+            aria-current={pathname.startsWith("/workflow") ? "page" : undefined}
+          >
+            <ClipboardCheck />
+            <span>任務台</span>
+          </Link>
+          <div className="mobile-more" ref={moreRef}>
+            <button
+              ref={moreButtonRef}
+              className={moreActive ? "active" : ""}
+              type="button"
+              aria-expanded={moreOpen}
+              aria-controls="mobile-more-menu"
+              onClick={() => setMoreOpenForPath(moreOpen ? null : pathname)}
+            >
+              <Ellipsis />
+              <span>更多</span>
+            </button>
+            {moreOpen && (
+              <div
+                id="mobile-more-menu"
+                className="mobile-more-menu"
+                aria-label="更多頁面"
+                role="group"
+              >
+                <div
+                  style={{
+                    padding: "8px 12px",
+                    borderBottom: "1px solid var(--line)",
+                  }}
+                >
+                  <GameModeToggle />
+                </div>
+                {moreItems.map((item) => {
+                  const Icon = item.icon;
+                  const active = pathname.startsWith(item.href);
+                  return (
+                    <Link
+                      className={active ? "active" : ""}
+                      href={item.href}
+                      key={item.href}
+                      aria-current={active ? "page" : undefined}
+                      onClick={() => setMoreOpenForPath(null)}
+                    >
+                      <Icon size={18} />
+                      <span>{item.label}</span>
+                    </Link>
+                  );
+                })}
+                <button
+                  className="mobile-tour-link"
+                  type="button"
+                  onClick={() => {
+                    tourReturnFocusRef.current = moreButtonRef.current;
+                    moreButtonRef.current?.focus();
+                    setMoreOpenForPath(null);
+                    setTourOpen(true);
+                  }}
+                >
+                  <BookOpenText size={18} />
+                  <span>30 秒摘要</span>
+                </button>
+              </div>
+            )}
+          </div>
+        </nav>
+        <TourDialog returnFocusRef={tourReturnFocusRef} />
+        <InspectorRice />
+        <CaseClosedCelebration />
+      </div>
+    </GameModeProvider>
+  );
 }

@@ -14,9 +14,7 @@ import { TrendChart } from "@/components/charts/dashboard-charts";
 import { ClosedLoopCase } from "@/components/product-story/closed-loop-case";
 import { EmptyState, LoadingState } from "@/components/ui/page";
 import { AnimatedNumber } from "@/components/ui/animated-number";
-import { DetectiveRankCard } from "@/components/game/detective-rank-card";
-import { FoodRescueFun } from "@/components/game/food-rescue-fun";
-import { CampusAdventureMap } from "@/components/game/campus-adventure-map";
+import { DetectiveAllianceHub } from "@/components/game/detective-alliance-hub";
 import {
   categoryRemainingShares,
   className,
@@ -140,8 +138,6 @@ export default function DashboardPage() {
   ];
   return (
     <div className="dashboard-wrap">
-      <DetectiveRankCard />
-      <FoodRescueFun currentWasteKg={Number((metrics.weekLeftoverG / 1000).toFixed(1))} />
       <section className="hero-panel">
         <div className="hero-copy">
           <p className="hero-brandline">
@@ -189,7 +185,6 @@ export default function DashboardPage() {
         </div>
         <ClosedLoopCase snapshot={scoped} mode={mode} />
       </section>
-      <CampusAdventureMap />
       {mode === "demo-local" && (
         <aside className="demo-evidence-banner" aria-label="示範資料說明">
           <FileCheck2 size={19} aria-hidden="true" />
@@ -215,6 +210,9 @@ export default function DashboardPage() {
           </article>
         ))}
       </section>
+      <DetectiveAllianceHub
+        currentWasteKg={Number((metrics.weekLeftoverG / 1000).toFixed(1))}
+      />
       <section className="dashboard-grid">
         <article className="card trend-card">
           <div className="card-head">

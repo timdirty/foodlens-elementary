@@ -1104,7 +1104,7 @@ function MealEvidenceWorkflowWorkbench({
       toast.success("一餐證據鏈已保存；重新整理後仍可追溯");
       triggerCelebration(
         `${linkedResult.servedOn} · ${snapshot.classes.find((c) => c.id === linkedResult.classId)?.name ?? "午餐任務"}`,
-        14
+        14,
       );
     } catch (caught) {
       const message = caught instanceof Error ? caught.message : "保存失敗";
@@ -1549,27 +1549,27 @@ function MealEvidenceWorkflowWorkbench({
               <CulpritClueBoard />
               <FeedbackStage
                 reasonCollectionStatus={value.reasonCollectionStatus}
-              reasonCounts={value.reasonCounts}
-              teacherContext={value.teacherContext}
-              actualDiners={value.actualDiners}
-              error={stageError}
-              onReasonCollectionChange={(
-                reasonCollectionStatus,
-                reasonCounts,
-              ) => updateCase({ reasonCollectionStatus, reasonCounts })}
-              onReasonChange={(key, count) =>
-                updateCase({
-                  reasonCounts: { ...value.reasonCounts, [key]: count },
-                })
-              }
-              onContextChange={(patch) =>
-                updateCase({
-                  teacherContext: { ...value.teacherContext, ...patch },
-                })
-              }
-            />
-          </>
-        )}
+                reasonCounts={value.reasonCounts}
+                teacherContext={value.teacherContext}
+                actualDiners={value.actualDiners}
+                error={stageError}
+                onReasonCollectionChange={(
+                  reasonCollectionStatus,
+                  reasonCounts,
+                ) => updateCase({ reasonCollectionStatus, reasonCounts })}
+                onReasonChange={(key, count) =>
+                  updateCase({
+                    reasonCounts: { ...value.reasonCounts, [key]: count },
+                  })
+                }
+                onContextChange={(patch) =>
+                  updateCase({
+                    teacherContext: { ...value.teacherContext, ...patch },
+                  })
+                }
+              />
+            </>
+          )}
           {step === 3 && analysis && cohort && (
             <DecisionStage
               analysis={analysis}

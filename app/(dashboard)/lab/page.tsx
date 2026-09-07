@@ -234,7 +234,6 @@ export default function LabPage() {
         description="圖表統一採加權剩食率；文字洞察由資料與門檻即時計算，不預先寫死。"
         icon={BarChart3}
       />
-      <LunchTimeMachine />
       <div className="method-banner">
         <FlaskConical size={20} />
         <div>
@@ -263,6 +262,7 @@ export default function LabPage() {
           </article>
         ))}
       </section>
+      <LunchTimeMachine />
       <Panel className="evidence-lab-panel" id="five-source-evidence">
         <PanelTitle
           kicker="五源量測 × 資料可信度"

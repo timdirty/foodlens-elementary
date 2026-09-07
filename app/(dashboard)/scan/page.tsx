@@ -1390,7 +1390,6 @@ function ScanWorkspace({
             </div>
           </Panel>
           <aside className="preview-panel">
-            <DetectiveNotebookInspector />
             {previewUrl ? (
               <div className="image-frame">
                 <Image
@@ -1691,6 +1690,7 @@ function ScanWorkspace({
                 );
               })}
             </div>
+            <DetectiveNotebookInspector />
           </Panel>
           <aside className="review-summary">
             <div className="image-frame compact">

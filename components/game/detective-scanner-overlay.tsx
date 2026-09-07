@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Search, Sparkles, Scan, Crosshair, HelpCircle, Check } from "lucide-react";
+import { Sparkles, Scan, Crosshair } from "lucide-react";
 import { useGameMode } from "./game-mode-context";
 
 interface DetectiveScannerOverlayProps {
@@ -102,25 +102,25 @@ export function DetectiveScannerOverlay({
 
                 {/* Popover Clue Card */}
                 {isSelected && (
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-slate-900/95 text-white border border-amber-400/80 rounded-xl p-3 shadow-2xl z-30 text-left animate-in zoom-in-95 duration-200">
-                    <div className="flex items-center justify-between text-xs font-black text-amber-300 mb-1">
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 bg-[#fffdf8] text-[var(--ink)] border border-[#ebd9b5] rounded-xl p-3 shadow-xl z-30 text-left animate-in zoom-in-95 duration-200">
+                    <div className="flex items-center justify-between text-xs font-black text-[#7a4f10] mb-1">
                       <span>{target.name}</span>
                       <span
                         className={`text-[10px] px-1.5 py-0.5 rounded font-bold ${
                           target.status === "warning"
-                            ? "bg-red-500/80 text-white"
-                            : "bg-emerald-500/80 text-white"
+                            ? "bg-[#fff1d8] text-[#8c5b14] border border-[#f1d493]"
+                            : "bg-[#edf5ee] text-[#174b36] border border-[#bdd8c4]"
                         }`}
                       >
                         {target.suspectRate}
                       </span>
                     </div>
-                    <p className="text-[11px] text-slate-300 leading-snug">
+                    <p className="text-[11px] text-[var(--ink)] leading-snug">
                       {target.note}
                     </p>
-                    <div className="mt-2 pt-1.5 border-t border-white/10 flex items-center justify-between text-[10px] text-amber-400/80">
-                      <span>點擊格位可手動校正</span>
-                      <Sparkles className="w-3 h-3" />
+                    <div className="mt-2 pt-1.5 border-t border-[#ebd9b5] flex items-center justify-between text-[10px] text-[#7a4f10]">
+                      <span>可至下方清單進行校正</span>
+                      <Sparkles className="w-3 h-3 text-[#d99432]" />
                     </div>
                   </div>
                 )}

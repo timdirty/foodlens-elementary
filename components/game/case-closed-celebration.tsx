@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { Sparkles, Trophy, X, ShieldCheck, Share2, CheckCircle2 } from "lucide-react";
+import React, { useState } from "react";
+import { Sparkles, X, ShieldCheck, Share2, CheckCircle2 } from "lucide-react";
 import { useGameMode } from "./game-mode-context";
 
 export function CaseClosedCelebration() {
@@ -15,7 +15,7 @@ export function CaseClosedCelebration() {
 
   const handleShare = () => {
     navigator.clipboard.writeText(
-      `🔎【FoodLens 食光偵探破案報捷】\n今日案件「${caseName}」順利偵破！\n我們全班成功守護了約 ${bowls} 碗熱騰騰白飯，減少約 ${(bowls * 0.16 * 2.5).toFixed(1)} kg 碳排放！\n偵探階級：${stats.rankTitle}`
+      `🔎【FoodLens 食光偵探破案報捷】\n今日案件「${caseName}」順利偵破！\n我們全班成功守護了約 ${bowls} 碗熱騰騰白飯，減少約 ${(bowls * 0.16 * 2.5).toFixed(1)} kg 碳排放！\n偵探階級：${stats.rankTitle}`,
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 3000);
@@ -38,7 +38,10 @@ export function CaseClosedCelebration() {
           <span>食光偵探所 · 案件偵破認證</span>
         </div>
 
-        <h2 id="case-closed-title" className="text-2xl font-black text-slate-900 tracking-tight mb-1">
+        <h2
+          id="case-closed-title"
+          className="text-2xl font-black text-slate-900 tracking-tight mb-1"
+        >
           今日午餐案件，宣告結案！
         </h2>
         <p className="text-xs text-slate-500 font-medium mb-5">
@@ -49,12 +52,18 @@ export function CaseClosedCelebration() {
         <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 border-2 border-amber-300 rounded-2xl p-4 mb-5 shadow-xs">
           <div className="grid grid-cols-2 gap-3 mb-3">
             <div className="bg-white/80 rounded-xl p-2.5 border border-amber-200">
-              <div className="text-[11px] font-bold text-amber-800">破案經驗值</div>
+              <div className="text-[11px] font-bold text-amber-800">
+                破案經驗值
+              </div>
               <div className="text-xl font-black text-amber-600">+50 XP ⚡</div>
             </div>
             <div className="bg-white/80 rounded-xl p-2.5 border border-amber-200">
-              <div className="text-[11px] font-bold text-amber-800">拯救食物</div>
-              <div className="text-xl font-black text-emerald-700">約 {bowls} 碗飯 🍚</div>
+              <div className="text-[11px] font-bold text-amber-800">
+                拯救食物
+              </div>
+              <div className="text-xl font-black text-emerald-700">
+                約 {bowls} 碗飯 🍚
+              </div>
             </div>
           </div>
 

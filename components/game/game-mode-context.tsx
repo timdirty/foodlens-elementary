@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 export interface DetectiveBadge {
   id: string;
@@ -102,40 +102,49 @@ const STORAGE_KEY_MODE = "foodlens_game_mode";
 const STORAGE_KEY_STATS = "foodlens_detective_stats_v1";
 
 export function GameModeProvider({ children }: { children: React.ReactNode }) {
-  const [isGameMode, setIsGameModeState] = useState<boolean>(true);
-  const [stats, setStats] = useState<DetectiveStats>({
-    xp: 280,
-    level: 2,
-    rankTitle: "剩食巡察使 🥈",
-    streakDays: 5,
-    solvedCasesCount: 14,
-    rescuedBowls: 86,
-    unlockedBadgeIds: ["first-case", "clean-plate-hero", "eagle-eye", "streak-master"],
+  const [isGameMode, setIsGameModeState] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const savedMode = localStorage.getItem(STORAGE_KEY_MODE);
+        if (savedMode !== null) return savedMode === "true";
+      } catch {}
+    }
+    return true;
   });
+
+  const [stats, setStats] = useState<DetectiveStats>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const savedStats = localStorage.getItem(STORAGE_KEY_STATS);
+        if (savedStats) {
+          const parsed = JSON.parse(savedStats);
+          const { level, rankTitle } = calculateRank(parsed.xp || 280);
+          return { ...parsed, level, rankTitle };
+        }
+      } catch {}
+    }
+    return {
+      xp: 280,
+      level: 2,
+      rankTitle: "剩食巡察使 🥈",
+      streakDays: 5,
+      solvedCasesCount: 14,
+      rescuedBowls: 86,
+      unlockedBadgeIds: [
+        "first-case",
+        "clean-plate-hero",
+        "eagle-eye",
+        "streak-master",
+      ],
+    };
+  });
+
   const [badges, setBadges] = useState<DetectiveBadge[]>(DEFAULT_BADGES);
   const [celebrationTrigger, setCelebrationTrigger] = useState<{
     active: boolean;
     caseName?: string;
     bowls?: number;
   }>({ active: false });
-
-  // Read from localStorage on mount
-  useEffect(() => {
-    try {
-      const savedMode = localStorage.getItem(STORAGE_KEY_MODE);
-      if (savedMode !== null) {
-        setIsGameModeState(savedMode === "true");
-      }
-      const savedStats = localStorage.getItem(STORAGE_KEY_STATS);
-      if (savedStats) {
-        const parsed = JSON.parse(savedStats);
-        const { level, rankTitle } = calculateRank(parsed.xp || 280);
-        setStats({ ...parsed, level, rankTitle });
-      }
-    } catch {
-      // ignore
-    }
-  }, []);
 
   const setIsGameMode = (enabled: boolean) => {
     setIsGameModeState(enabled);
@@ -172,8 +181,8 @@ export function GameModeProvider({ children }: { children: React.ReactNode }) {
               unlocked: true,
               unlockedAt: new Date().toISOString().split("T")[0],
             }
-          : b
-      )
+          : b,
+      ),
     );
     setStats((prev) => {
       if (prev.unlockedBadgeIds.includes(badgeId)) return prev;
@@ -226,7 +235,12 @@ const DEFAULT_FALLBACK_CTX: GameModeContextType = {
     streakDays: 5,
     solvedCasesCount: 14,
     rescuedBowls: 86,
-    unlockedBadgeIds: ["first-case", "clean-plate-hero", "eagle-eye", "streak-master"],
+    unlockedBadgeIds: [
+      "first-case",
+      "clean-plate-hero",
+      "eagle-eye",
+      "streak-master",
+    ],
   },
   badges: DEFAULT_BADGES,
   addXp: () => {},

@@ -13,7 +13,13 @@ export default defineConfig({
   },
   test: {
     environment: "node",
-    exclude: ["tests/e2e/**", "node_modules/**", ".next/**"],
+    exclude: [
+      "tests/e2e/**",
+      "node_modules/**",
+      ".next/**",
+      ".vercel/**",
+      "output/**",
+    ],
     // Avoid pre-forking one worker per logical core on presentation laptops.
     // The IndexedDB suites are I/O-bound and become less reliable when many
     // jsdom/transform workers compete with the local Supabase VM.
