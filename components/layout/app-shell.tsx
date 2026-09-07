@@ -402,20 +402,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               </div>
             ))}
           </nav>
-          <SidebarModeToggle />
           <div className="sidebar-foot">
-            <Link
-              className={
-                pathname.startsWith("/admin")
-                  ? "font-bold text-[var(--green-dark)]"
-                  : ""
-              }
-              href="/admin"
-            >
-              <Settings2 size={18} />
-              教師管理
-            </Link>
-            <p>科技助力社會創新</p>
+            <p>科技助力社會創新 · 國小組</p>
             <span>臺北市 115 學年度</span>
           </div>
         </aside>
@@ -435,7 +423,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                   ? `示範 ${snapshot?.meals.length ?? 48} 餐期`
                   : `校園記錄 ${snapshot?.meals.length ?? 0} 餐期`}
               </span>
-              <GameModeToggle compact />
             </div>
             <div className="top-actions">
               <Link
@@ -445,21 +432,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 <MonitorPlay size={16} />
                 <span>8 分鐘簡報</span>
               </Link>
-              <button
-                ref={tourButtonRef}
-                className="ghost-button tour-button"
-                type="button"
-                onClick={(event) => {
-                  tourReturnFocusRef.current = event.currentTarget;
-                  setTourOpen(true);
-                }}
-              >
-                <BookOpenText size={16} />
-                <span>30 秒研究摘要</span>
-              </button>
               <Link className="primary-button" href="/scan">
                 <Camera size={17} />
-                新增餐盤記錄
+                拍照破案
               </Link>
             </div>
           </header>

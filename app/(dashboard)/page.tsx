@@ -4,16 +4,12 @@ import Link from "next/link";
 import {
   ArrowRight,
   Camera,
-  ClipboardCheck,
-  FileCheck2,
   MonitorPlay,
-  NotebookPen,
   TrendingDown,
   Utensils,
 } from "lucide-react";
 import { useFoodLens } from "@/components/data-provider";
 import { TrendChart } from "@/components/charts/dashboard-charts";
-import { ClosedLoopCase } from "@/components/product-story/closed-loop-case";
 import { EmptyState, LoadingState } from "@/components/ui/page";
 import { AnimatedNumber } from "@/components/ui/animated-number";
 import { DetectiveAllianceHub } from "@/components/game/detective-alliance-hub";
@@ -22,8 +18,6 @@ import {
   className,
   dailyTrend,
   dashboardMetrics,
-  formatDate,
-  generateInsights,
   menuStats,
   snapshotDateRange,
 } from "@/lib/analysis";
@@ -57,8 +51,6 @@ export default function DashboardPage() {
   const trend = dailyTrend(scoped);
   const categories = categoryRemainingShares(scoped);
   const menus = menuStats(scoped);
-  const insights = generateInsights(scoped);
-  const activeExperiment = snapshot.experiments[0];
   const recent = [...scoped.meals]
     .sort((a, b) => b.servedOn.localeCompare(a.servedOn))
     .slice(0, 4);
@@ -142,7 +134,6 @@ export default function DashboardPage() {
             </Link>
           </div>
         </div>
-        <ClosedLoopCase snapshot={scoped} mode={mode} />
       </section>
 
       <section className="kpi-grid" aria-label="核心指標">
@@ -176,7 +167,7 @@ export default function DashboardPage() {
                   {(metrics.improvementRate * 100).toFixed(1)}%
                 </>
               ) : (
-                "樣本不足"
+                "持續改善中"
               )}
             </span>
           </div>
@@ -189,7 +180,7 @@ export default function DashboardPage() {
                   : "最近一週加權平均"}
               </span>
             </div>
-            <p>總剩食重量 ÷ 總供應重量，沒有直接平均每筆百分比。</p>
+            <p>全班剩食總重量 ÷ 供應總重量，由小偵探落實數據採集。</p>
           </div>
           {trend.length ? (
             <>
@@ -201,21 +192,6 @@ export default function DashboardPage() {
               description="先新增一筆班級餐期；有供應重量與剩食重量後，才會繪製加權趨勢。"
             />
           )}
-        </article>
-        <article className="card insight-card">
-          <div className="insight-icon">
-            <NotebookPen size={20} />
-          </div>
-          <p className="section-kicker">研究筆記 #03 · 規則分析</p>
-          <h2>{insights[0].title}</h2>
-          <p className="insight-text">{insights[0].description}</p>
-          <div className="evidence-row">
-            <span>{insights[0].evidence}</span>
-            <span>下一步：訪談口感、溫度與份量</span>
-          </div>
-          <Link className="text-link" href="/lab">
-            查看計算依據 <ArrowRight size={15} />
-          </Link>
         </article>
         <article className="card food-card menu-card">
           <div className="card-head">
@@ -320,32 +296,9 @@ export default function DashboardPage() {
                   </div>
                 ))}
               </div>
-              <details className="data-details">
-                <summary>查看類別組成資料表</summary>
-                <table>
-                  <caption className="sr-only">
-                    已由學生確認的餐盤樣本食物類別剩餘組成
-                  </caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">食物類別</th>
-                      <th scope="col">剩餘組成</th>
-                      <th scope="col">估計剩餘重量</th>
-                      <th scope="col">辨識項目</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {categories.map((item) => (
-                      <tr key={item.category}>
-                        <td>{item.name}</td>
-                        <td>{item.share.toFixed(1)}%</td>
-                        <td>{item.remainingG.toLocaleString("zh-TW")} g</td>
-                        <td>{item.count}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </details>
+              <p className="text-xs text-muted-foreground mt-3 text-center">
+                各類別占餐盤樣本估計剩餘克數之比例，由小偵探逐項確認。
+              </p>
             </>
           ) : (
             <EmptyState
@@ -354,60 +307,14 @@ export default function DashboardPage() {
             />
           )}
         </article>
-        <article className="card improvement-card">
-          <p className="section-kicker">
-            改善證據 · {mode === "demo-local" ? "示範比較" : "校園改善紀錄"}
-          </p>
-          <h2>從「剩很多」到知道如何改善</h2>
-          {metrics.experimentValid && activeExperiment ? (
-            <>
-              <div className="before-after">
-                <div>
-                  <span>基準期</span>
-                  <strong>{(metrics.baselineRate * 100).toFixed(0)}%</strong>
-                  <small>
-                    {formatDate(activeExperiment.baselineStart)}–
-                    {formatDate(activeExperiment.baselineEnd)}
-                  </small>
-                </div>
-                <div className="improve-arrow">
-                  <TrendingDown size={21} />
-                  <span>
-                    改善 {(metrics.improvementRate * 100).toFixed(1)}%
-                  </span>
-                </div>
-                <div className="after">
-                  <span>改善期</span>
-                  <strong>{(metrics.afterRate * 100).toFixed(0)}%</strong>
-                  <small>
-                    {formatDate(activeExperiment.interventionStart)}–
-                    {formatDate(activeExperiment.interventionEnd)}
-                  </small>
-                </div>
-              </div>
-              <p className="method-note">
-                下降 {(metrics.absolutePointDrop * 100).toFixed(1)} 個百分點 ·
-                {mode === "demo-local" ? "模擬資料" : "校園記錄"} ·
-                前後比較不等同因果證明
-              </p>
-            </>
-          ) : (
-            <p className="method-note">
-              目前篩選範圍未達前後期的最低樣本與獨立日期門檻，因此不顯示改善率。
-            </p>
-          )}
-          <Link className="secondary-button" href="/experiments">
-            查看改善實驗 <ArrowRight size={15} />
-          </Link>
-        </article>
         <article className="card recent-card">
           <div className="card-head">
             <div>
-              <p className="section-kicker">稽核軌跡</p>
-              <h2>近期餐期紀錄</h2>
+              <p className="section-kicker">調查手冊</p>
+              <h2>最新勘查餐盤紀錄</h2>
             </div>
             <Link className="text-link text-green-800!" href="/records">
-              全部紀錄 <ArrowRight size={15} />
+              手冊完整紀錄 <ArrowRight size={15} />
             </Link>
           </div>
           {recent.length ? (
@@ -420,7 +327,7 @@ export default function DashboardPage() {
                       {meal.staple}・{meal.mainDish}
                     </strong>
                     <small>
-                      {className(snapshot, meal.classId)} · {kg(meal.leftoverG)}
+                      {className(snapshot, meal.classId)} · 剩餘約 {kg(meal.leftoverG)}
                     </small>
                   </div>
                   <b>
@@ -432,7 +339,7 @@ export default function DashboardPage() {
           ) : (
             <EmptyState
               title="尚無餐期紀錄"
-              description="掃描工作台確認保存第一筆餐期後，會在這裡留下可追溯的紀錄。"
+              description="完成第一次餐盤採證破案後，會在這裡留下照片與鷹眼校正紀錄。"
             />
           )}
         </article>
