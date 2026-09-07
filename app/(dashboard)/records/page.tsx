@@ -20,7 +20,6 @@ import {
 } from "lucide-react";
 import { useFoodLens } from "@/components/data-provider";
 import { PlateImage } from "@/components/plate-image";
-import { MealSafetyEditor } from "@/components/records/meal-safety-editor";
 import {
   EmptyState,
   LoadingState,
@@ -556,20 +555,7 @@ function MealEvidence({ mealId, id }: { mealId: string; id?: string }) {
           </Link>
         </div>
       </div>
-      {meal && (
-        <MealSafetyEditor
-          key={meal.id}
-          meal={meal}
-          observations={snapshot.mealSafetyObservations}
-          meals={snapshot.meals}
-          provenance={mode === "demo-local" ? "demo" : "school-record"}
-          initialOpen={requestedSafety === meal.id}
-          onSave={async (observation) => {
-            await repository.saveMealSafetyObservation(observation);
-            await refresh();
-          }}
-        />
-      )}
+
       {scans.length === 0 ? (
         <EmptyState
           title="這筆餐期尚無餐盤照片"

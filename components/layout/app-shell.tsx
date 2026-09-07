@@ -39,21 +39,12 @@ const TAIPEI_LUNCH_SOURCE =
 
 const navGroups = [
   {
-    label: "核心功能",
+    label: "食光偵探所",
     items: [
-      { label: "食光儀表板", href: "/", icon: CircleGauge },
-      { label: "餐盤拍照辨識", href: "/scan", icon: Camera },
-      { label: "調查歷程日誌", href: "/records", icon: ListChecks },
-      { label: "8 分鐘評審簡報", href: "/presentation", icon: MonitorPlay },
-    ],
-  },
-  {
-    label: "深入探究（選用）",
-    items: [
-      { label: "五階任務台", href: "/workflow", icon: ClipboardCheck },
-      { label: "配方實驗桌", href: "/lab", icon: BarChart3 },
-      { label: "改善行動實驗", href: "/experiments", icon: FlaskConical },
-      { label: "全鏈路去向追蹤", href: "/trace", icon: Truck },
+      { label: "食光總部", href: "/", icon: CircleGauge },
+      { label: "拍照破案", href: "/scan", icon: Camera },
+      { label: "偵探手冊", href: "/records", icon: ListChecks },
+      { label: "評審簡報", href: "/presentation", icon: MonitorPlay },
     ],
   },
 ];

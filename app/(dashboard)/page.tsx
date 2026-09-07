@@ -144,17 +144,7 @@ export default function DashboardPage() {
         </div>
         <ClosedLoopCase snapshot={scoped} mode={mode} />
       </section>
-      {mode === "demo-local" && (
-        <aside className="demo-evidence-banner" aria-label="示範資料說明">
-          <FileCheck2 size={19} aria-hidden="true" />
-          <strong>目前是系統測試情境，不是本校研究成果。</strong>
-          <span>
-            初始 48 筆餐期與 96
-            份餐盤用來檢查計算、人工修正與前後比較流程；數字是刻意設計的可重現資料。
-          </span>
-          <Link href="/research#results">查看研究誠信說明</Link>
-        </aside>
-      )}
+
       <section className="kpi-grid" aria-label="核心指標">
         {kpis.map((kpi) => (
           <article className={`kpi-card ${kpi.tone}`} key={kpi.label}>
@@ -204,30 +194,6 @@ export default function DashboardPage() {
           {trend.length ? (
             <>
               <TrendChart data={trend} />
-              <details className="data-details">
-                <summary>查看圖表資料表</summary>
-                <table>
-                  <caption className="sr-only">
-                    {rangeLabel}每日加權剩食率、餐期數與日期明細
-                  </caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">日期</th>
-                      <th scope="col">剩食率</th>
-                      <th scope="col">餐期數</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {trend.map((row) => (
-                      <tr key={row.date}>
-                        <td>{row.label}</td>
-                        <td>{row.rate}%</td>
-                        <td>{row.samples}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </details>
             </>
           ) : (
             <EmptyState
@@ -284,32 +250,6 @@ export default function DashboardPage() {
                   </div>
                 ))}
               </div>
-              <details className="data-details">
-                <summary>查看菜單排行資料表</summary>
-                <table>
-                  <caption className="sr-only">
-                    {rangeLabel}最容易剩下的五項菜單排行
-                  </caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">菜單</th>
-                      <th scope="col">加權剩食率</th>
-                      <th scope="col">供餐日／餐期</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {menus.slice(0, 5).map((menu) => (
-                      <tr key={menu.name}>
-                        <td>{menu.name}</td>
-                        <td>{menu.rate.toFixed(1)}%</td>
-                        <td>
-                          {menu.dateCount} 日／{menu.count} 筆
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </details>
             </>
           ) : (
             <EmptyState

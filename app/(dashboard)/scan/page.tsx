@@ -199,7 +199,8 @@ function ScanWorkspace({
   const previousStepRef = useRef(1);
   const formBeforeAttachmentRef = useRef<ScanFormState | undefined>(undefined);
   const requestIdRef = useRef(createUuid());
-  const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
+  const [step, setStep] = useState<1 | 2 | 3 | 4>(2);
+  const [showClassSelector, setShowClassSelector] = useState(false);
   const [stage, setStage] = useState(0);
   const [saving, setSaving] = useState(false);
   const initialImage = mode === "demo-local" ? demoImages[2].src : "";
@@ -837,19 +838,75 @@ function ScanWorkspace({
         目前第 {step} 步：{scanSteps[step - 1]}
       </p>
       <ol className="stepper" aria-label="掃描進度">
-        {scanSteps.map((label, index) => (
+        {[
+          { num: 1, label: "拍下餐盤照片", active: step === 2, done: step > 2 },
+          { num: 2, label: "Gemini AI 初判", active: step === 3, done: step > 3 },
+          { num: 3, label: "鷹眼校正破案", active: step === 4, done: false },
+        ].map((s) => (
           <li
-            className={
-              step === index + 1 ? "active" : step > index + 1 ? "done" : ""
-            }
-            aria-current={step === index + 1 ? "step" : undefined}
-            key={label}
+            className={s.active ? "active" : s.done ? "done" : ""}
+            aria-current={s.active ? "step" : undefined}
+            key={s.label}
           >
-            <span>{step > index + 1 ? <Check size={14} /> : index + 1}</span>
-            <strong>{label}</strong>
+            <span>{s.done ? <Check size={14} /> : s.num}</span>
+            <strong>{s.label}</strong>
           </li>
         ))}
       </ol>
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-[#f5f9f6] border border-[#cbe1d1] text-xs">
+        <div className="flex items-center gap-2.5">
+          <span className="text-xl" aria-hidden="true">
+            🍱
+          </span>
+          <div>
+            <div className="font-bold text-[#1e5338] flex items-center gap-2">
+              <span>食光探案現場</span>
+              <span className="px-2 py-0.5 rounded-full bg-[#e8f5e9] text-[#2e7d32] border border-[#a5d6a7]">
+                {selectableClasses.find((c) => c.id === selectedClassId)?.name || "五年一班"} · {form.date || "今日午餐"}
+              </span>
+            </div>
+            <p className="text-[#496556] m-0">
+              AI 負責初判菜色，小偵探「鷹眼校正」微調並扣除骨頭！
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            className="px-2.5 py-1 rounded bg-white border border-[#a5d6a7] text-[#2e7d32] font-semibold hover:bg-[#e8f5e9] transition"
+            onClick={() => setShowClassSelector((v) => !v)}
+          >
+            {showClassSelector ? "收起班級選擇" : "更換班級 / 日期"}
+          </button>
+        </div>
+      </div>
+      {showClassSelector && (
+        <div className="mb-4 p-3 rounded-xl bg-white border border-[#cbe1d1] shadow-sm flex flex-wrap items-center gap-4 text-xs">
+          <label className="flex items-center gap-1.5">
+            <span className="font-semibold text-[#1e5338]">調查班級：</span>
+            <select
+              className="p-1 rounded border border-[#a5d6a7] bg-white text-xs"
+              value={selectedClassId}
+              onChange={(e) => updateForm({ ...form, classId: e.target.value })}
+            >
+              {selectableClasses.map((item) => (
+                <option value={item.id} key={item.id}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex items-center gap-1.5">
+            <span className="font-semibold text-[#1e5338]">供餐日期：</span>
+            <input
+              type="date"
+              className="p-1 rounded border border-[#a5d6a7] bg-white text-xs"
+              value={form.date}
+              onChange={(e) => updateForm({ ...form, date: e.target.value })}
+            />
+          </label>
+        </div>
+      )}
       {step === 1 && (
         <Panel>
           <PanelTitle
@@ -1166,13 +1223,9 @@ function ScanWorkspace({
         <div className="scan-layout">
           <Panel>
             <PanelTitle
-              kicker="第 2 步"
-              title="拍攝或選擇剩食餐盤"
-              note={
-                mode === "school-cloud"
-                  ? "校園正式記錄必須先上傳本餐的真實餐盤照片，才能分析、人工判讀或保存。"
-                  : "支援手機相機、圖片上傳與三張獨家示範照片。"
-              }
+              kicker="第 1 步｜餐盤採證"
+              title="拍下或選擇今日午餐照片"
+              note="支援手機相機實拍、相簿上傳，或直接點選下方精選示範便當！"
               headingRef={stepHeadingRef}
               headingTabIndex={-1}
             />
@@ -1468,22 +1521,12 @@ function ScanWorkspace({
           <div className="button-row span-all">
             <button
               className="secondary-action"
-              onClick={() => {
-                markDraftDirty();
-                setStep(1);
-              }}
-            >
-              <ArrowLeft size={17} />
-              上一步
-            </button>
-            <button
-              className="secondary-action"
               aria-describedby="manual-review-note scan-photo-requirements"
               disabled={cloudImageMissing}
               onClick={startManualReview}
             >
               <Pencil size={16} />
-              直接建立人工判讀表
+              手動輸入觀察項目
             </button>
             <button
               className="primary-action"
@@ -1491,8 +1534,8 @@ function ScanWorkspace({
               disabled={cloudImageMissing}
               onClick={() => void runAnalysis()}
             >
-              <ScanLine size={17} />
-              開始{analysisMode === "mock" ? "示範辨識" : "真實模型分析"}
+              <ScanLine size={18} />
+              ✨ 啟動 Gemini AI 視覺偵測分析
             </button>
           </div>
           <p
@@ -1562,17 +1605,9 @@ function ScanWorkspace({
         <div className="review-layout">
           <Panel>
             <PanelTitle
-              kicker="第 4 步｜學生校正"
-              title={
-                isManualAnalysis
-                  ? "沒有模型也能建立可稽核資料"
-                  : "逐項檢查影像初判"
-              }
-              note={
-                isManualAnalysis
-                  ? "系統已依菜單建立三個起始項目；請由學生填寫類型、標準份量與剩餘比例。"
-                  : "調整滑桿後，剩餘克數會重新計算。"
-              }
+              kicker="小偵探破案｜鷹眼校正"
+              title="核對 AI 辨識結果，微調實際剩餘"
+              note="AI 提供初判線索，由小偵探逐項確認！滑動滑桿校正比例，骨頭果皮不計入浪費。"
               headingRef={stepHeadingRef}
               headingTabIndex={-1}
             />
