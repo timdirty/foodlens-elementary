@@ -1,0 +1,820 @@
+{
+  "schema_version": 1,
+  "ledger_version": "v0.2",
+  "reviewed_on": "2026-09-06",
+  "timezone": "Asia/Taipei",
+  "scope": "三案各六項主張的跨文件索引；沿用原案內容與證據，不取代原案母稿、研究原始紀錄或具名覆核。",
+  "review_boundary": "本次完整讀取 SoundScape v0.3 文稿、內容來源、交付紀錄與 local-data-auth 工程紀錄，核對來源檔案；未重新執行網站、模型或資料庫驗收。FoodLens／ScamLens 原有凍結主張與快照不變，全部學生具名覆核仍為 pending。",
+  "projects": {
+    "foodlens": {
+      "name": "FoodLens 食光偵探",
+      "workspace": "/Users/apple/Documents/ChatGPT/115科技素養比賽1"
+    },
+    "scamlens": {
+      "name": "ScamLens 騙譯",
+      "workspace": "/Users/apple/Documents/ChatGPT/115科技素養比賽2"
+    },
+    "soundscape": {
+      "name": "SoundScape AI 城市聲景偵探",
+      "workspace": "/Users/apple/Documents/ChatGPT/115科技素養比賽3"
+    }
+  },
+  "source_snapshots": {
+    "foodlens-document-v0.1": {
+      "project_id": "foodlens",
+      "kind": "artifact-frozen",
+      "path": "output/pdf/FoodLens_初選提案_官方格式待填稿_v0.1.pdf",
+      "sha256": "ca65b394bd53ea08dadb9ba706e3705e13e0b18878330c8039ae10db7125104e",
+      "source_path": "docs/competition/foodlens-proposal-v0.1.json",
+      "boundary": "文稿 v0.1；應用引用 Round 9，資料庫引用 Round 8，兩張截圖另為 2026-09-05 的 Demo 原型畫面。"
+    },
+    "foodlens-product-round9": {
+      "project_id": "foodlens",
+      "kind": "local-verified",
+      "path": "docs/audits/2026-09-06-product-round9-readiness/AUDIT.md",
+      "boundary": "400 項單元／元件、112 項瀏覽器通過，72 項既有條件跳過，無自動重試；本輪沒有重跑資料庫、啟用真實模型或進校驗證。"
+    },
+    "scamlens-document-v0.4": {
+      "project_id": "scamlens",
+      "kind": "artifact-frozen",
+      "path": "output/pdf/ScamLens_初選提案_官方格式待填稿_v0.4.pdf",
+      "sha256": "b710f08f6005e69b0928c36491c81ce9b44d25a9020d5d00b8f516637800c134",
+      "source_path": "output/competition/ScamLens_官方格式稿交接_v0.4.md",
+      "boundary": "第 8 頁文字已同步 Round 43 的受控教學候選；第 7、8 頁保留 Round 41 截圖，不是新解說畫面。"
+    },
+    "scamlens-product-round43": {
+      "project_id": "scamlens",
+      "kind": "local-verified",
+      "path": "output/release/round-43-verification.md",
+      "source_digest": "879a5478e1701d644e5b0f09482f8f669d6cd68d7094ff8b8bca293da9d35ed3",
+      "boundary": "825 項單元／整合、49 項公開瀏覽器、2 項獨立離線通過，零重試；新 AI 介接以模擬供應商回應驗證，未啟用外部模型或正式收案。"
+    },
+    "soundscape-document-v0.2": {
+      "project_id": "soundscape",
+      "kind": "historical-document",
+      "path": "output/pdf/SoundScape_AI_提案構想書_初稿_v0.2.pdf",
+      "sha256": "f43a13e81206949ed74151ce945eae4a0cb1f28b41ffa2b981dc3ca28b1d12ae",
+      "source_path": "docs/competition-content-brief-v0.2.md",
+      "boundary": "2026-09-05 文稿與既有控制中心；新官方格式文件尚待原案交接，不把 09-06 新能力及驗收自動當作已寫入 v0.2。"
+    },
+    "soundscape-product-recovery-20260906": {
+      "project_id": "soundscape",
+      "kind": "local-verified",
+      "path": "docs/experiment-recovery-release-2026-09-06.md",
+      "boundary": "703 項應用、506 項 SQL、9 份 migration 乾淨重播及實際雙連線競態的本機紀錄；非完整 Real 登入、實體手機、託管或田野研究驗收。"
+    },
+    "soundscape-document-v0.3": {
+      "project_id": "soundscape",
+      "kind": "artifact-frozen",
+      "path": "output/pdf/SoundScape_AI_提案構想書_官方格式待填稿_v0.3.pdf",
+      "sha256": "b7a9dbc8bee093858383461d911458b566f7f99ef19f6e5c77d2a6c77583f6be",
+      "byte_size": 1002207,
+      "source_path": "assets/competition/proposal-v0.3.json",
+      "source_sha256": "04064a9a8ed902af35af9b9c8d527c458ee1e9337e21ca6b5a46593005bc2578",
+      "handoff_path": "docs/competition-proposal-v0.3.md",
+      "handoff_sha256": "6f881d2a98f83b7071acfcc3d82e0a5249efbd0f2b5f82533117f460e9dec24c",
+      "release_path": "assets/competition/proposal-v0.3.release.json",
+      "release_sha256": "91d26c975ef2d172796162f922194c27ab70bc42673ea31a6b77239fcc172874",
+      "boundary": "2026-09-06 官方格式待填稿；引用 local-data-auth 的 791 應用／14 Auth及API工程紀錄，506 DB 為前輪未重跑基線。兩張圖仍為 2026-09-05 v0.2 內容快照。交付紀錄 formatVerified=true、submissionReady=false；文稿格式與原案逐頁審查不能代替學生、校方、Real 或田野驗收。"
+    },
+    "soundscape-product-local-auth-20260906": {
+      "project_id": "soundscape",
+      "kind": "local-verified",
+      "path": "docs/local-data-auth-release-2026-09-06.md",
+      "sha256": "85db922091cb75d9ca68401546eb93c627731b53a291e6a027582833fb9412c5",
+      "baseline_snapshot_id": "soundscape-product-recovery-20260906",
+      "boundary": "原案主流程紀錄：105 檔／791 應用測試及建置、14 項正常登入／API檢查，另有隔離合成帳號的教師事前登錄、刷新找回、學生權限瀏覽器操作。前輪 506 DB 與 9 migrations 本輪未重跑。不包含完整學生同意／採樣碼鏈、實體手機錄音定位、hosted 權限與原音刪除或田野研究；Preview READY 僅部署中繼資料，不是遠端匿名驗收。中央此次未重跑這些工程項目。"
+    }
+  },
+  "claims": [
+    {
+      "claim_id": "FL-01",
+      "project_id": "foodlens",
+      "statement": "FoodLens 分開記錄前處理、未供出可食、盤後可食、不可食與液體／污染五類來源；各來源淨重由毛重扣皮重，餐盤影像估計另列。",
+      "evidence_kind": "implemented-prototype",
+      "dataset_mode": "Demo",
+      "source_snapshot": {
+        "document_id": "foodlens-document-v0.1",
+        "product_evidence_id": "foodlens-product-round9"
+      },
+      "source_refs": [
+        {
+          "path": "docs/competition/foodlens-proposal-v0.1.json",
+          "locator": "pages[number=3] 五種來源；pages[number=8] 資料方法"
+        },
+        {
+          "path": "lib/waste-intelligence.ts",
+          "locator": "五源定義與毛重、皮重、淨重資料結構"
+        },
+        {
+          "path": "docs/competition/field-pilot-kit-v1.md",
+          "locator": "第 6 節 五源秤重 SOP"
+        }
+      ],
+      "unit_and_formula": "重量單位為整數公克；淨重＝毛重－皮重。照片估計＝標準原始份量×影像估計比例。",
+      "used_in": {
+        "document_pages": [3, 8],
+        "website_routes": ["/workflow", "/scan"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "原型欄位與 Demo 操作不是已完成校園秤重。",
+        "照片不能取代全班電子秤實測；不可把不可食殘渣都稱為學生可避免浪費。",
+        "須維持相同瀝水與容器定義；缺漏不能用零補足。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "FL-02",
+      "project_id": "foodlens",
+      "statement": "Mock 示範食物初判，外部模型介面可提供候選；規則引擎計算比例及建議，使用者修正並確認後才保存，營養師與校方保留供餐決定。",
+      "evidence_kind": "implemented-prototype",
+      "dataset_mode": "Demo",
+      "source_snapshot": {
+        "document_id": "foodlens-document-v0.1",
+        "product_evidence_id": "foodlens-product-round9"
+      },
+      "source_refs": [
+        {
+          "path": "docs/competition/foodlens-proposal-v0.1.json",
+          "locator": "pages[number=7] 人機責任表與圖 2"
+        },
+        {
+          "path": "lib/ai.ts",
+          "locator": "FoodAnalysisProvider 與 Mock／遠端分析介面"
+        },
+        {
+          "path": "app/api/ai/analyze/route.ts",
+          "locator": "伺服器端分析入口"
+        }
+      ],
+      "used_in": {
+        "document_pages": [7],
+        "website_routes": ["/scan", "/forecast"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "Mock 是固定規則流程示範，不證明模型理解了圖片。",
+        "外部模型可能接收影像；私有儲存不等於影像永不離校。",
+        "自動化確認流程驗收不等於學生本人已審閱或營養師真的核准。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "FL-03",
+      "project_id": "foodlens",
+      "statement": "剩食率使用重量加權；星期比較與類別洞察均設獨立供餐日門檻，資料不足就保留需要更多資料，不靠增加同餐照片數取得資格。",
+      "evidence_kind": "implemented-prototype",
+      "dataset_mode": "Demo",
+      "source_snapshot": {
+        "document_id": "foodlens-document-v0.1",
+        "product_evidence_id": "foodlens-product-round9"
+      },
+      "source_refs": [
+        {
+          "path": "docs/competition/foodlens-proposal-v0.1.json",
+          "locator": "pages[number=8] 資料方法與洞察門檻"
+        },
+        {
+          "path": "lib/analysis.ts",
+          "locator": "加權比例、日期去重與洞察門檻"
+        },
+        {
+          "path": "docs/competition/foodlens-proposal-evidence-v0.1.json",
+          "locator": "evidence_files 中 lib/analysis.ts 的來源指紋"
+        }
+      ],
+      "unit_and_formula": "剩食率＝sum(剩食公克)／sum(供應公克)。星期三／五各至少 3 個獨立日；類別各至少 5 個辨識項、3 個獨立日；差異至少 5 個百分點。",
+      "used_in": {
+        "document_pages": [8],
+        "website_routes": ["/lab"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "這是產品保守門檻，不是統計顯著性檢定。",
+        "不能直接平均各筆百分比，也不能把同一供餐日的多張餐盤當作多個獨立日期。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "FL-04",
+      "project_id": "foodlens",
+      "statement": "供餐規則優先參考相同菜色的 3–8 個獨立供餐日，依匹配降級並設定減量上限；建議須由營養師與學校決定，同步檢查缺餐、添餐與滿意度。",
+      "evidence_kind": "implemented-prototype",
+      "dataset_mode": "estimate",
+      "source_snapshot": {
+        "document_id": "foodlens-document-v0.1",
+        "product_evidence_id": "foodlens-product-round9"
+      },
+      "source_refs": [
+        {
+          "path": "docs/competition/foodlens-proposal-v0.1.json",
+          "locator": "pages[number=9] 供餐建議與安全餘量"
+        },
+        {
+          "path": "lib/prediction.ts",
+          "locator": "180 天、獨立日期、75% 因子及匹配上限"
+        },
+        {
+          "path": "docs/competition/field-pilot-kit-v1.md",
+          "locator": "第 10 節 介入安全閘門"
+        }
+      ],
+      "unit_and_formula": "以最新餐期向前 180 天；歷史剩食率×75% 為減量候選，依匹配品質限制在 15%、8% 或 5% 以內；示範成本為 80 元／公斤。",
+      "used_in": {
+        "document_pages": [9],
+        "website_routes": ["/forecast", "/experiments", "/impact"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "係數與上限是規則設定，不是營養學標準或專業處方。",
+        "試算節省不等於實際節省或成本全額可回收。",
+        "減少剩食不能以缺餐、特殊飲食風險或強迫完食為代價。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "FL-05",
+      "project_id": "foodlens",
+      "statement": "八角色分工規劃讓學生、教室、營養師、校方、家長、團膳、清運及主管機關各有資訊與決策責任，避免把午餐浪費歸責於單一孩子或廠商。",
+      "evidence_kind": "design-hypothesis",
+      "dataset_mode": "not-applicable",
+      "source_snapshot": {
+        "document_id": "foodlens-document-v0.1",
+        "product_evidence_id": "foodlens-product-round9"
+      },
+      "source_refs": [
+        {
+          "path": "docs/competition/foodlens-proposal-v0.1.json",
+          "locator": "pages[number=5] 八角色分工；pages[number=6] 資料交換"
+        },
+        {
+          "path": "docs/competition/field-pilot-kit-v1.md",
+          "locator": "第 3 節 八個角色與最小責任"
+        },
+        {
+          "path": "docs/competition/foodlens-proposal-evidence-v0.1.json",
+          "locator": "evidence_files 中 lib/repositories/supabase.ts 的權限範圍"
+        }
+      ],
+      "used_in": {
+        "document_pages": [5, 6],
+        "website_routes": ["/research"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "合作分工不是八種帳號已部署、單位已簽約或訪談已完成。",
+        "目前正式雲端主要為同校教師與管理者權限；家長、廠商及主管機關獨立入口仍屬規劃。",
+        "只應分享必要的去識別聚合資料，不以剩食率排名或懲罰學生、班級與廠商。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "FL-06",
+      "project_id": "foodlens",
+      "statement": "固定 Demo 有 48 筆班級餐期、96 份餐盤及 12 個供餐日期；示範前後剩食率顯示 27.1% 與 19.0%，只用於演示公式和流程。",
+      "evidence_kind": "implemented-prototype",
+      "dataset_mode": "Demo",
+      "source_snapshot": {
+        "document_id": "foodlens-document-v0.1",
+        "product_evidence_id": "foodlens-product-round9"
+      },
+      "source_refs": [
+        {
+          "path": "docs/competition/foodlens-proposal-v0.1.json",
+          "locator": "abstract；pages[number=8] 模擬樣本；pages[number=9] 前後表"
+        },
+        {
+          "path": "docs/competition/foodlens-proposal-evidence-v0.1.json",
+          "locator": "demo_comparison"
+        },
+        {
+          "path": "lib/seed.ts",
+          "locator": "seed v18 固定模擬資料"
+        }
+      ],
+      "sample_and_period": "示範基準 2026-08-24–08-28：8 餐期、2 獨立日；示範後期 2026-10-14–10-16：8 餐期、2 獨立日，包含尚未發生日期。",
+      "unit_and_formula": "基準 14914／55120，後期 10879／57160。使用未四捨五入比例計算後顯示下降 8.0 個百分點、相對改善 29.7%；不得由 27.1－19.0 反推精確差值。",
+      "used_in": {
+        "document_pages": [2, 8, 9],
+        "website_routes": ["/", "/experiments"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "不是本校實測、大數據研究或模型訓練集。",
+        "模擬的滿意度與營養師確認不是實際回覆或簽核。",
+        "前後菜色、出席與介入條件不同，不得歸因為 AI 造成改善。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "SC-01",
+      "project_id": "scamlens",
+      "statement": "ScamLens 將訊息整理為原文線索、話術意圖與查證步驟；0–100 話術風險指標是教學入口，不是詐騙機率或真偽判決。",
+      "evidence_kind": "implemented-prototype",
+      "dataset_mode": "Demo",
+      "source_snapshot": {
+        "document_id": "scamlens-document-v0.4",
+        "product_evidence_id": "scamlens-product-round43"
+      },
+      "source_refs": [
+        {
+          "path": "output/competition/ScamLens_報名文案與送件檢核_v0.1.md",
+          "locator": "300 字內容簡介；可以說與不能說"
+        },
+        {
+          "path": "docs/AI_USAGE.md",
+          "locator": "產品中的 AI；刻意不交給模型決定的內容"
+        },
+        {
+          "path": "output/competition/ScamLens_官方格式稿交接_v0.4.md",
+          "locator": "第 7、8 頁仍使用 Round 41 合成訊息截圖"
+        }
+      ],
+      "unit_and_formula": "0–100 為版本化話術指標，非機率；圖中訊息為合成示範。",
+      "used_in": {
+        "document_pages": [2, 7],
+        "website_routes": ["/"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "不能據分數斷言對方一定詐騙或訊息一定安全。",
+        "不得將模擬案例或本機操作當成真實受害案件。",
+        "誤判會影響正常發送者與求助者，仍需離開原訊息查證。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "SC-02",
+      "project_id": "scamlens",
+      "statement": "Round 43 的外部模型契約可提供分類、逐字證據與受控跨線索教學候選；伺服器核對後只補上預先編定解說，不接受模型自由文字改寫分數、騙譯或安全建議。",
+      "evidence_kind": "implemented-prototype",
+      "dataset_mode": "not-applicable",
+      "source_snapshot": {
+        "document_id": "scamlens-document-v0.4",
+        "product_evidence_id": "scamlens-product-round43"
+      },
+      "source_refs": [
+        {
+          "path": "output/competition/ScamLens_官方格式稿交接_v0.4.md",
+          "locator": "本次修正與來源，第 3、6 項"
+        },
+        {
+          "path": "docs/AI_USAGE.md",
+          "locator": "taxonomy v5、四個教學概念與 fallback"
+        },
+        {
+          "path": "src/lib/analysis/explanation-candidates.ts",
+          "locator": "受控教學候選驗證"
+        },
+        {
+          "path": "src/lib/analysis/ai-sdk.ts",
+          "locator": "SDK adapter"
+        }
+      ],
+      "used_in": {
+        "document_pages": [8],
+        "website_routes": ["/"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "只有四種教學關係，不代表可理解任意新話術。",
+        "本機介接測試使用模擬供應商回應；外部 AI 尚未啟用，不能宣稱真實模型準確率。",
+        "v0.4 第 8 頁保留的 Round 41 圖片不是新跨線索解說截圖；v0.3 不含此新契約。",
+        "四段固定教學文案仍待具名真人覆核。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "SC-03",
+      "project_id": "scamlens",
+      "statement": "研究 Demo 的 40 位學生全部由固定規則虛構，只展示前後測與比較分析方法，目前沒有正式真人學習成效結論。",
+      "evidence_kind": "implemented-prototype",
+      "dataset_mode": "Demo",
+      "source_snapshot": {
+        "document_id": "scamlens-document-v0.4",
+        "product_evidence_id": "scamlens-product-round43"
+      },
+      "source_refs": [
+        {
+          "path": "output/competition/ScamLens_報名文案與送件檢核_v0.1.md",
+          "locator": "300 字內容簡介；可以說與不能說"
+        },
+        {
+          "path": "docs/RESEARCH_OPERATIONS.md",
+          "locator": "公開 Demo 的固定 40 位虛構學生與 participant-flow-v1 邊界"
+        },
+        {
+          "path": "output/competition/ScamLens_官方格式稿交接_v0.4.md",
+          "locator": "本次修正與來源，第 6 項"
+        }
+      ],
+      "sample_and_period": "固定 40 位虛構學生；不是實際招募期間與真人樣本。",
+      "used_in": {
+        "document_pages": [2, 9],
+        "website_routes": ["/demo"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "不能宣稱已提升防詐能力、改變實際受騙率或證明因果。",
+        "Demo 無流失畫面不能當成正式研究沒有流失的證據。",
+        "本機測試通過不會把合成資料轉成 Real。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "SC-04",
+      "project_id": "scamlens",
+      "statement": "首頁預設以本地規則分析，應用不把貼入訊息與結果寫入資料庫、網址或 prompt／output 日誌；外部模型需完整設定並取得當次訊息主動同意。",
+      "evidence_kind": "implemented-prototype",
+      "dataset_mode": "not-applicable",
+      "source_snapshot": {
+        "document_id": "scamlens-document-v0.4",
+        "product_evidence_id": "scamlens-product-round43"
+      },
+      "source_refs": [
+        {
+          "path": "docs/AI_USAGE.md",
+          "locator": "產品中的 AI，預設規則與外送條件"
+        },
+        {
+          "path": "output/competition/ScamLens_官方格式稿交接_v0.4.md",
+          "locator": "第 8 頁 AI 角色與外部 AI 尚未啟用"
+        },
+        {
+          "path": "docs/RESEARCH_OPERATIONS.md",
+          "locator": "營運日誌、服務供應商 metadata 與正式研究告知界線"
+        }
+      ],
+      "used_in": {
+        "document_pages": [6, 8],
+        "website_routes": ["/"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "首頁分析與正式研究是不同資料流程，不能把首頁不存原文延伸成所有研究資料都不保存。",
+        "Hosting、CAPTCHA、Auth 等仍可能有網路 metadata；不宣稱所有服務完全不留痕。",
+        "當次同意不等於校方／家長研究核准，缺少實際供應商與治理條件時維持外送關閉。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "SC-05",
+      "project_id": "scamlens",
+      "statement": "44 則百科案例、Challenge 與研究題本初稿包含 AI 協作合成內容；內容 inventory 可追溯版本與指紋，但逐項真人審閱及專家驗證仍未完成。",
+      "evidence_kind": "implemented-prototype",
+      "dataset_mode": "Demo",
+      "source_snapshot": {
+        "document_id": "scamlens-document-v0.4",
+        "product_evidence_id": "scamlens-product-round43"
+      },
+      "source_refs": [
+        {
+          "path": "docs/AI_USAGE.md",
+          "locator": "開發期間生成式工具；content-and-asset-governance inventory"
+        },
+        {
+          "path": "docs/content-and-asset-governance.v1.json",
+          "locator": "內容與品牌素材 inventory，真人審閱 pending"
+        },
+        {
+          "path": "output/competition/ScamLens_提案素材揭露_v0.1.md",
+          "locator": "沿用網站素材與來源；學生工作紀錄"
+        },
+        {
+          "path": "output/competition/ScamLens_官方格式稿交接_v0.4.md",
+          "locator": "尚待真人完成"
+        }
+      ],
+      "used_in": {
+        "document_pages": [8, 10],
+        "website_routes": ["/library", "/challenge"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "指紋與自動化完整性檢查不是專家內容審查或法律授權。",
+        "不能宣稱所有案例由學生手寫或已全數人工覆核。",
+        "正式題本的開發 fixture 不得直接當作已核准題本使用。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "SC-06",
+      "project_id": "scamlens",
+      "statement": "研究規劃比較完整騙譯與基本標示兩種教學，採不同表面訊息的前後測；除判讀表現外，也需注意誤判、恐懼與求助意願，避免羞辱受騙者。",
+      "evidence_kind": "design-hypothesis",
+      "dataset_mode": "not-applicable",
+      "source_snapshot": {
+        "document_id": "scamlens-document-v0.4",
+        "product_evidence_id": "scamlens-product-round43"
+      },
+      "source_refs": [
+        {
+          "path": "output/competition/ScamLens_報名文案與送件檢核_v0.1.md",
+          "locator": "300 字內容簡介；10 頁對照第 5、9 頁；題對未等值限制"
+        },
+        {
+          "path": "docs/RESEARCH_OPERATIONS.md",
+          "locator": "正式研究啟用、告知、退出、題本與聚合條件"
+        },
+        {
+          "path": "output/competition/ScamLens_官方格式稿交接_v0.4.md",
+          "locator": "尚待真人完成，題對尚無經驗等值證據"
+        }
+      ],
+      "used_in": {
+        "document_pages": [5, 9],
+        "website_routes": ["/research", "/demo"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "目前沒有正式真人研究，不把研究規劃寫成已證明有效。",
+        "題對尚無經驗等值證據，不能直接把差異歸因於教學。",
+        "誤判、恐懼及求助意願是需納入的風險面向，不代表現有平台已完成這些量表或測得改善。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "SO-01",
+      "project_id": "soundscape",
+      "statement": "SoundScape 的手機相對聲音強度與 Quiet Score 是產品指標，僅在相同裝置與設定層下連同場景限制閱讀；不是法定 dB SPL、違規判定、健康風險或通行舒適度。",
+      "evidence_kind": "implemented-prototype",
+      "dataset_mode": "Demo",
+      "source_snapshot": {
+        "document_id": "soundscape-document-v0.3",
+        "product_evidence_id": "soundscape-product-local-auth-20260906"
+      },
+      "source_refs": [
+        {
+          "path": "assets/competition/proposal-v0.3.json",
+          "locator": "pages[0]（實體第 3 頁）量測範圍；pages[4]（第 7 頁）相對指標；pages[6]（第 9 頁）通行感受另行回饋"
+        },
+        {
+          "path": "docs/competition-proposal-v0.3.md",
+          "locator": "相較舊稿的重要修正；驗證方式與限制；待團隊完成"
+        },
+        {
+          "path": "assets/competition/proposal-v0.3.release.json",
+          "locator": "artifacts.source／artifacts.pdf；unchangedScope；pending；formatVerified=true 與 submissionReady=false"
+        },
+        {
+          "path": "docs/local-data-auth-release-2026-09-06.md",
+          "locator": "主流程品質閘門；主流程瀏覽器驗證；測試環境修正與限制"
+        }
+      ],
+      "unit_and_formula": "相對聲音強度與 Quiet Score 為產品指標；不換算成法定分貝。通行感受需經同意另收回饋，不由較低強度或較高 Quiet Score 推定。",
+      "used_in": {
+        "document_pages": [3, 7, 9],
+        "website_routes": ["/collect"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "15 秒手機數值未經聲學校正，不能宣稱法規超標、量測認證或降噪若干分貝。",
+        "不同裝置、設定、天候與場景不直接作精密比較；模型檔案或工程測試不是聲學校正。",
+        "通行感受與手機指標分開；未取得回饋前不宣稱較舒適。",
+        "Demo、隔離合成帳號的工程驗證與正式 Real／田野成果保持分開。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "SO-02",
+      "project_id": "soundscape",
+      "statement": "Demo 聲源分類是可重現的教學模擬；Real 流程才由裝置端 YAMNet 提供候選，再由學生依現場脈絡修正、授權教師核准。品質、權限、GIS 聚合與指標公式屬規則，不是模型替人作決定。",
+      "evidence_kind": "implemented-prototype",
+      "dataset_mode": "Demo",
+      "source_snapshot": {
+        "document_id": "soundscape-document-v0.3",
+        "product_evidence_id": "soundscape-product-local-auth-20260906"
+      },
+      "source_refs": [
+        {
+          "path": "assets/competition/proposal-v0.3.json",
+          "locator": "pages[4]（實體第 7 頁）模型、Demo、規則與人類分工；公開地圖／私有路線／私有實驗分流"
+        },
+        {
+          "path": "docs/competition-proposal-v0.3.md",
+          "locator": "相較舊稿的重要修正；驗證方式與限制；待團隊完成"
+        },
+        {
+          "path": "assets/competition/proposal-v0.3.release.json",
+          "locator": "artifacts.source／artifacts.pdf；unchangedScope；pending；formatVerified=true 與 submissionReady=false"
+        },
+        {
+          "path": "docs/local-data-auth-release-2026-09-06.md",
+          "locator": "主流程品質閘門；主流程瀏覽器驗證；測試環境修正與限制"
+        }
+      ],
+      "used_in": {
+        "document_pages": [7],
+        "website_routes": ["/collect"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "Demo Mock 不等於現場 YAMNet 推論或在地準確率；模型失敗可改人工標註並揭露，不補造推論。",
+        "公開地圖、私有甲乙路線與教師私有前後實驗是不同資料用途；Gold Label 準確度子集不是三者所有資料的共同前置條件。",
+        "791 項應用與 14 項 Auth／API 檢查使用隔離合成資料，不含完整學生同意採樣鏈、真機錄音定位或正式服務放行。",
+        "本人問題定義、人工修正與教師核准仍待具名紀錄；產品介面不代替真人已完成。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "SO-03",
+      "project_id": "soundscape",
+      "statement": "固定甲乙路線比較須在相同協定、裝置層與時段下進行；每路至少兩個不同完整實走，每趟都須達到有效網格、核准錄音及覆蓋門檻。資料不足不排名，不提供任意起終點導航或交通安全保證。",
+      "evidence_kind": "design-hypothesis",
+      "dataset_mode": "not-applicable",
+      "source_snapshot": {
+        "document_id": "soundscape-document-v0.3",
+        "product_evidence_id": "soundscape-product-local-auth-20260906"
+      },
+      "source_refs": [
+        {
+          "path": "assets/competition/proposal-v0.3.json",
+          "locator": "pages[6]（實體第 9 頁）研究分支表「甲乙路線」與通行回饋；pages[0]（第 3 頁）研究範圍"
+        },
+        {
+          "path": "docs/competition-proposal-v0.3.md",
+          "locator": "相較舊稿的重要修正；驗證方式與限制；待團隊完成"
+        },
+        {
+          "path": "assets/competition/proposal-v0.3.release.json",
+          "locator": "artifacts.source／artifacts.pdf；unchangedScope；pending；formatVerified=true 與 submissionReady=false"
+        },
+        {
+          "path": "docs/local-data-auth-release-2026-09-06.md",
+          "locator": "主流程品質閘門；主流程瀏覽器驗證；測試環境修正與限制"
+        }
+      ],
+      "sample_and_period": "每路至少 2 個不同完整實走；每趟至少 5 個有效網格、5 筆核准錄音及 70% 路徑覆蓋，協定、裝置層與時段一致。不同實走不等於不同受試者；這些是研究門檻，不是已取得樣本。",
+      "used_in": {
+        "document_pages": [3, 9],
+        "website_routes": [],
+        "video_seconds": null
+      },
+      "limitations": [
+        "每趟門檻不能用多趟合併總數充抵；兩次不同實走不自動等於兩位獨立參與者。",
+        "採樣視窗不是認證步行時間；通行代價與主觀感受需另有適當紀錄。",
+        "較安靜不能犧牲交通安全、可達性或不可接受的時間代價；尚無甲或乙較舒適的真實研究結果。",
+        "這是固定甲乙路線協定，不能與教師 Before／After 每人每期的樣本門檻混用。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "SO-04",
+      "project_id": "soundscape",
+      "statement": "Before／After 先固定名單、網格與時窗，保留原始候選、排除與原操作查核；按每人每日平均、每人跨日平均，再對原定參與者等權比較。資料不足不產生差值，也不藉移除不足者或縮短規則湊結果。",
+      "evidence_kind": "implemented-prototype",
+      "dataset_mode": "not-applicable",
+      "source_snapshot": {
+        "document_id": "soundscape-document-v0.3",
+        "product_evidence_id": "soundscape-product-local-auth-20260906"
+      },
+      "source_refs": [
+        {
+          "path": "assets/competition/proposal-v0.3.json",
+          "locator": "pages[2]（實體第 5 頁）原始建議、固定計畫與收據；pages[6]（第 9 頁）「改善前後」門檻與等權方法"
+        },
+        {
+          "path": "docs/real-experiment-release-2026-09-06.md",
+          "locator": "保留原始候選與排除原因；before-after-matched-daily-v1 固定計算規則"
+        },
+        {
+          "path": "docs/competition-proposal-v0.3.md",
+          "locator": "相較舊稿的重要修正；驗證方式與限制；待團隊完成"
+        },
+        {
+          "path": "assets/competition/proposal-v0.3.release.json",
+          "locator": "artifacts.source／artifacts.pdf；unchangedScope；pending；formatVerified=true 與 submissionReady=false"
+        },
+        {
+          "path": "docs/local-data-auth-release-2026-09-06.md",
+          "locator": "主流程品質閘門；主流程瀏覽器驗證；測試環境修正與限制"
+        }
+      ],
+      "unit_and_formula": "before-after-matched-daily-v1：每位參與者先算每日平均，再算每期跨日平均，最後讓每位原定參與者等權；After−Before 為相對聲音強度／Quiet Score 指標點，不是分貝或降噪百分比。",
+      "sample_and_period": "每位原定參與者每期至少 5 筆可分析核准錄音，分布於至少 3 個臺北日期；After 結束後另有固定 7 天同步期。門檻不代表已取得田野樣本。",
+      "used_in": {
+        "document_pages": [5, 9],
+        "website_routes": ["/experiments"],
+        "video_seconds": null
+      },
+      "limitations": [
+        "新稿已載明此方法；不能因此把教師預登錄的局部合成帳號驗證寫成完整介入、報告或田野驗收。",
+        "指標改變不證明因果，也不是法定降噪分貝或改善百分比。",
+        "不能移除不足者、挑選好看樣本、補造缺值或縮短固定同步期通過門檻。",
+        "9 月 6 日才開始的多日前後研究加 7 天同步期，不能在 9 月 11 日初選前宣稱完成。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    },
+    {
+      "claim_id": "SO-05",
+      "project_id": "soundscape",
+      "statement": "準確度評估另取同意保留且原音可用的合格子集，經兩人獨立盲標與教師裁決形成 Gold Label；目前評估對象為映射後 Top-1 主類別，不是完整多標籤辨識率，也不是所有採樣、發布或路線比較都必經的步驟。",
+      "evidence_kind": "design-hypothesis",
+      "dataset_mode": "not-applicable",
+      "source_snapshot": {
+        "document_id": "soundscape-document-v0.3",
+        "product_evidence_id": "soundscape-product-local-auth-20260906"
+      },
+      "source_refs": [
+        {
+          "path": "assets/competition/proposal-v0.3.json",
+          "locator": "pages[4]（實體第 7 頁）準確度合格子集與映射後 Top-1；pages[5]（第 8 頁）Demo 分類／Gold 不作在地準確率"
+        },
+        {
+          "path": "docs/competition-proposal-v0.3.md",
+          "locator": "相較舊稿的重要修正；驗證方式與限制；待團隊完成"
+        },
+        {
+          "path": "assets/competition/proposal-v0.3.release.json",
+          "locator": "artifacts.source／artifacts.pdf；unchangedScope；pending；formatVerified=true 與 submissionReady=false"
+        },
+        {
+          "path": "docs/local-data-auth-release-2026-09-06.md",
+          "locator": "主流程品質閘門；主流程瀏覽器驗證；測試環境修正與限制"
+        }
+      ],
+      "used_in": {
+        "document_pages": [7, 8],
+        "website_routes": [],
+        "video_seconds": null
+      },
+      "limitations": [
+        "Gold Label 不是一般採樣、私有路線或公開地圖每筆資料都必須經過的共同發布步驟。",
+        "學生修正率、Mock 分數、合成 Gold、模型檔案 SHA 和工程通過數都不是在地 AI 準確率。",
+        "具備盲標與裁決機制不等於真人已盲標、教師已簽核；具名工作紀錄仍待完成。",
+        "正式研究同意、原音保存與刪除及完整 Real／真機驗收仍待完成。"
+      ],
+      "student_owner": null,
+      "named_review": "pending",
+      "unit_and_formula": "評估範圍限定映射後 Top-1 主類別；不把單一主類別比較擴張為完整多標籤辨識率。",
+      "sample_and_period": "僅適用同意保留且可用原音、兩人獨立盲標與教師裁決的評估子集；目前尚無可供公布在地準確率的正式 Real Gold Set。"
+    },
+    {
+      "claim_id": "SO-06",
+      "project_id": "soundscape",
+      "statement": "學生、通勤者、居民店家、校方與城市專業者可用可追溯聲景資料討論需求及取捨；需求與效益仍待訪談或使用測試。候等區時段聲景提示只是一項須校方核准且不改交通動線的擬議改善，尚未執行。",
+      "evidence_kind": "design-hypothesis",
+      "dataset_mode": "not-applicable",
+      "source_snapshot": {
+        "document_id": "soundscape-document-v0.3",
+        "product_evidence_id": "soundscape-product-local-auth-20260906"
+      },
+      "source_refs": [
+        {
+          "path": "assets/competition/proposal-v0.3.json",
+          "locator": "pages[2]（實體第 5 頁）利害關係人與權衡；pages[3]（第 6 頁）需求驗證、候等區提示、資料最小化；pages[7]（第 10 頁）本人責任與待送件"
+        },
+        {
+          "path": "docs/competition-proposal-v0.3.md",
+          "locator": "相較舊稿的重要修正；驗證方式與限制；待團隊完成"
+        },
+        {
+          "path": "assets/competition/proposal-v0.3.release.json",
+          "locator": "artifacts.source／artifacts.pdf；unchangedScope；pending；formatVerified=true 與 submissionReady=false"
+        },
+        {
+          "path": "docs/local-data-auth-release-2026-09-06.md",
+          "locator": "主流程品質閘門；主流程瀏覽器驗證；測試環境修正與限制"
+        }
+      ],
+      "used_in": {
+        "document_pages": [5, 6, 10],
+        "website_routes": [],
+        "video_seconds": null
+      },
+      "limitations": [
+        "真實動機、需求人數、居民引言與滿意度不能由 AI 虛構；學生本人貢獻、訪談與教師覆核仍待具名紀錄。",
+        "原音預設不保存；特定研究需保留時另有同意及期限，公開不得顯示精確 GPS、個別時間、私有備註或身分。",
+        "文稿描述已實作的公開聚合為 100 公尺／1 小時、每格至少 3 位獨立採樣者；正式服務仍須治理及遠端驗收，不能據此稱已公開安全或校方核准。",
+        "聲音強度及 Quiet Score 不替代通行感受、交通安全、可達性與自願參與；擬議提示尚未實行，更沒有改善結論。"
+      ],
+      "student_owner": null,
+      "named_review": "pending"
+    }
+  ],
+  "revision": {
+    "previous_ledger_path": "docs/competition/shared/claim-ledger.v0.1.json",
+    "previous_ledger_sha256": "6cb965d3371023ef360abe9b1155c787c336a4550cfcad7c794d17d0a0a5aae2",
+    "changed_project": "soundscape",
+    "preservation": "保留 18 個 claim_id、FoodLens／ScamLens 十二條原主張與既有所有來源快照；SoundScape v0.2 與 recovery 工程快照繼續作歷史，未覆寫成 v0.3。",
+    "page_mapping": "SoundScape assets/competition/proposal-v0.3.json 的 pages 使用零起算索引；實體 PDF 頁碼＝索引＋3。",
+    "status": "draft-cross-project-claim-index-not-named-review-or-submission"
+  }
+}

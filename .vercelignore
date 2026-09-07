@@ -1,0 +1,24 @@
+# Never upload local credentials or runtime state.
+.env*
+!.env.example
+.git/
+.vercel/
+supabase/.temp/
+supabase/.branches/
+playwright.*.tmp.config.ts
+
+# Rebuildable artifacts and local test output.
+.next/
+node_modules/
+dist/
+output/
+tmp/
+coverage/
+test-results/
+playwright-report/
+.playwright-cli/
+
+# Local-only files.
+README 2.md
+*.log
+.DS_Store

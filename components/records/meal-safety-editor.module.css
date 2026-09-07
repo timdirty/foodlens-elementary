@@ -1,0 +1,164 @@
+.safety {
+  min-width: 0;
+  padding: 18px;
+  margin: 16px 0;
+  border: 1px solid #cddbcf;
+  border-radius: 5px;
+  background: #f8faf4;
+  color: #294637;
+  overflow-wrap: anywhere;
+}
+
+.safety p {
+  margin: 8px 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.safety h3,
+.safety h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.summary {
+  padding: 12px;
+  border-left: 3px solid #819977;
+  background: #fffef8;
+}
+
+.editor {
+  margin-top: 18px;
+}
+
+.inputs {
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.observation {
+  min-width: 0;
+  padding: 12px;
+  margin: 14px 0;
+  border: 1px solid #d1ddcf;
+  background: #fffef9;
+}
+
+.observation legend {
+  padding: 0 5px;
+  font-weight: 700;
+}
+
+.fields,
+.ratings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.ratings {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 100px), 1fr));
+}
+
+.safety label {
+  display: block;
+  min-width: 0;
+}
+
+.safety label > span {
+  font-size: 14px;
+}
+
+.safety input,
+.safety select,
+.safety textarea {
+  font-size: 16px;
+}
+
+.safety button {
+  min-height: 44px;
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.safety .confirm {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.confirm input {
+  width: 20px;
+  min-height: 20px;
+  margin: 0;
+  flex: 0 0 20px;
+}
+
+.confirm span {
+  padding: 2px 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.error {
+  padding: 12px;
+  border-left: 3px solid #a34632;
+  color: #823323;
+  background: #fff1ea;
+}
+
+.history {
+  margin-top: 14px;
+}
+
+.history summary {
+  min-height: 44px;
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.history article {
+  border-top: 1px solid #d1ddcf;
+  padding: 12px 0;
+}
+
+.history small {
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.safety :focus-visible {
+  outline: 3px solid #397452;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .safety {
+    padding: 12px;
+  }
+
+  .actions > button {
+    flex: 1 1 100%;
+  }
+}

@@ -1,0 +1,424 @@
+{
+  "schema_version": 1,
+  "register_version": "0.3",
+  "observed_on": "2026-09-06",
+  "timezone": "Asia/Taipei",
+  "owner_workspace": "/Users/apple/Documents/ChatGPT/115科技素養比賽1",
+  "scope": "三案官方格式待填稿及獨立工程證據的交接登錄；不是正式校園產品全部完成或已送件聲明",
+  "official_sources": [
+    {
+      "path": "/Users/apple/Downloads/附件_跨域創新素養競賽實施計畫_數位實中(115學年度)v2.pdf",
+      "sha256": "fc7710cd2ceefae0730897067b68d32f8305cf9a9dd67f0b4ca0b61532d5b600",
+      "byte_size": 437954
+    },
+    {
+      "path": "/Users/apple/Downloads/附件_跨域創新素養競賽實施計畫_數位實中(115學年度)v2.odt",
+      "sha256": "83b9fb6bbb3f2c70dc95be5385d82dda9c8a6ec8953e9c5605d6616e87a78666",
+      "byte_size": 833916
+    }
+  ],
+  "policy": {
+    "document_status_is_not_product_readiness": true,
+    "local_tests_are_not_field_results": true,
+    "frozen_artifact_does_not_follow_latest_product_gate": true,
+    "public_release_requires_separate_authority": true,
+    "official_pdf_size_text": "50Mb",
+    "internal_pdf_size_exclusive_limit_bytes": 5000000,
+    "size_unit_interpretation": "pending-organizer-confirmation",
+    "all_projects_fully_synchronized": false,
+    "official_format_drafts_aligned": true
+  },
+  "projects": [
+    {
+      "project_id": "foodlens",
+      "name": "FoodLens 食光偵探",
+      "workspace": "/Users/apple/Documents/ChatGPT/115科技素養比賽1",
+      "category_draft": "科技助力社會創新",
+      "artifact_version": "v0.1",
+      "artifact_index": "/Users/apple/Documents/ChatGPT/115科技素養比賽1/docs/competition/foodlens-proposal-evidence-v0.1.json",
+      "handoff": "/Users/apple/Documents/ChatGPT/115科技素養比賽1/docs/competition/foodlens-official-proposal-handoff-v0.1.md",
+      "document_contract": {
+        "abstract": {
+          "text": "若只記錄校園午餐廚餘總重，便難以分辨浪費來自備餐、分餐或用餐情境。FoodLens食光偵探以一餐為單位，連結已確認菜單、餐盤觀察、五類廚餘秤重、匿名原因、人類決策與清運憑證。原型以Mock演練菜色與剩餘比例初判；使用者核對修正後才保存，原值另留紀錄。規則引擎依加權比例、獨立供餐日與資料品質整理線索，提出具減量上限的建議；由營養師及學校決定是否採用，並以前後量測檢查剩食、供應不足、添餐與滿意度。現有48筆餐期、96份餐盤與改善數字皆為固定模擬，不代表實測成果；生成素材不納入模型準確率。原型已具離線備援與可操作流程，下一步須取得校方同意，完成學生具名覆核與真實校園試辦。",
+          "max_characters": 300,
+          "page": 2
+        },
+        "entry_abstract": {
+          "text": "FoodLens把校園午餐的菜單、餐盤觀察、分類秤重與清運去向串成證據鏈。學生修正AI初判，系統提出有樣本與安全上限的供餐建議，由校方決定並再次量測。現有資料皆為模擬，尚不代表真實減廢成效。",
+          "max_characters": 100
+        },
+        "required_text": [
+          {
+            "text": "FoodLens 食光偵探",
+            "page": 1,
+            "role": "title"
+          },
+          {
+            "text": "一、議題描述與界定",
+            "page": 3,
+            "role": "heading"
+          },
+          {
+            "text": "午餐後的一桶廚餘，同時可能包含沒分出去的飯菜、餐盤剩下的食物、骨頭果皮與湯汁。",
+            "page": 3,
+            "role": "body"
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "kind": "editable-master",
+          "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽1/output/competition/FoodLens_初選提案_官方格式待填稿_v0.1.docx",
+          "generation_status": "exists",
+          "validation_status": "document-checks-recorded-named-review-pending",
+          "sha256": "53a344f67fee160845906512548b94aadfda7c36e1c5e168caaefb57f1467ba6",
+          "byte_size": 550286
+        },
+        {
+          "kind": "reading-pdf",
+          "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽1/output/pdf/FoodLens_初選提案_官方格式待填稿_v0.1.pdf",
+          "generation_status": "exists",
+          "validation_status": "document-checks-recorded-named-review-pending",
+          "sha256": "ca65b394bd53ea08dadb9ba706e3705e13e0b18878330c8039ae10db7125104e",
+          "byte_size": 1076148,
+          "page_count": 10
+        }
+      ],
+      "source_snapshot": {
+        "status": "frozen-document-pending-team-review",
+        "content_source": "/Users/apple/Documents/ChatGPT/115科技素養比賽1/docs/competition/foodlens-proposal-v0.1.json",
+        "content_sha256": "a186afdc5cfff95b73c25525841f0415633bf91db15cadb1d0c08c5d1bbf339d",
+        "evidence_manifest": "/Users/apple/Documents/ChatGPT/115科技素養比賽1/docs/competition/foodlens-proposal-evidence-v0.1.json",
+        "planning_source": "/Users/apple/Documents/ChatGPT/115科技素養比賽1/docs/competition/115-entry-initial-plan.md",
+        "product_evidence": "Round 9 application; Round 8 database",
+        "screenshot_snapshot": "2026-09-05 Round 7 原型 Demo 局部截圖，非本校觀測",
+        "screenshot_sources": [
+          "/Users/apple/Documents/ChatGPT/115科技素養比賽1/docs/audits/2026-09-05-product-round7-browser/12-trace-desktop-1440.png",
+          "/Users/apple/Documents/ChatGPT/115科技素養比賽1/docs/audits/2026-09-05-product-round7-browser/04-scan-review.png"
+        ],
+        "artifact_validation_path": "/Users/apple/Documents/ChatGPT/115科技素養比賽1/output/competition/work/foodlens-v01/",
+        "validation_summary": {
+          "entry_characters": 95,
+          "abstract_characters": 286,
+          "native_paragraphs_and_cells": 146,
+          "page_ledger_entries": 147,
+          "image_alt_texts": 2,
+          "visual_reviewed_pages": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          "render_dpi": 140,
+          "pdf_font": "BiauKaiTC-Regular，所有 PDF 子集嵌入；DOCX 未嵌字型，不等同 Windows DFKai-SB",
+          "font_sizes_pt": [12, 14, 24]
+        },
+        "warning": "舊 Markdown 只保留歷史；本稿以新 JSON 內容和凍結 manifest 為準。工程驗收、文件驗收不等於學生具名覆核、校方核准或實測成效。"
+      },
+      "latest_product_gate": {
+        "id": "foodlens-round-9",
+        "date": "2026-09-06",
+        "evidence_path": "/Users/apple/Documents/ChatGPT/115科技素養比賽1/docs/audits/2026-09-06-product-round9-readiness/AUDIT.md",
+        "verification_scope": "既有本機驗收紀錄已讀取；本共用登錄未重跑",
+        "unit_component_passed": 400,
+        "unit_component_files": 50,
+        "browser_passed": 112,
+        "browser_conditionally_skipped": 72,
+        "browser_failed": 0,
+        "browser_retries": 0,
+        "build_id": "leJDGIvWz4itBAY_PUVAW",
+        "database_baseline": {
+          "id": "foodlens-round-8",
+          "evidence_path": "/Users/apple/Documents/ChatGPT/115科技素養比賽1/docs/audits/2026-09-06-product-round8/AUDIT.md",
+          "pgtap_passed": 276,
+          "migrations": 21,
+          "rerun_in_round_9": false
+        },
+        "limits": ["不是正式模型或實測成效", "本輪未部署", "不是文件或校方驗收"]
+      },
+      "pending_review": [
+        "學生具名問題動機、貢獻、內容與 AI／素材覆核",
+        "學校、組別、團隊、2–4 位學生及適用指導教師",
+        "家長／校方適用程序、學生簽名與學校核章",
+        "既有網站公開事實與未經刊登的承辦書面判定",
+        "校方核准後的真實操作計時、訪談、秤重、權限與裝置驗證；未完成就保留研究設計身分",
+        "填入本人資料或換電腦編修後重新輸出與驗收，另出版本，不以舊 PDF 目視紀錄替新檔放行",
+        "正式送件前核准、上傳後回讀與回執"
+      ],
+      "submission": {
+        "status": "not-submitted",
+        "receipt": null
+      }
+    },
+    {
+      "project_id": "scamlens",
+      "name": "ScamLens 騙譯",
+      "workspace": "/Users/apple/Documents/ChatGPT/115科技素養比賽2",
+      "category_draft": "AI 時代的數位公民與科技倫理",
+      "artifact_version": "v0.4",
+      "artifact_index": "/Users/apple/Documents/ChatGPT/115科技素養比賽2/output/competition/README.md",
+      "handoff": "/Users/apple/Documents/ChatGPT/115科技素養比賽2/output/competition/ScamLens_官方格式稿交接_v0.4.md",
+      "document_contract": {
+        "abstract": {
+          "text": "國中生常看得懂訊息的字面意思，卻未必看見催促、權威冒充、利益誘惑等操控方式。ScamLens 騙譯讓學生貼入一則訊息，先看0至100的「話術風險指標」，再回到原文找證據、讀懂對方想讓自己做什麼，最後取得「不要做、現在做、如何查證」三組建議；指標只用於教學，不是詐騙機率，也不替使用者定案。網站另有11類44則合成案例與每次10題的防詐挑戰，沒有AI金鑰或資料服務時，仍可用本地規則完成核心流程。研究規劃比較完整騙譯與基本標示兩種教學，採不同表面訊息的前後測。公開儀表板的40位全是依固定規則產生的虛構學生，只用來展示分析方法；正式未成年研究尚未招募學生，因此沒有學習成效結論。",
+          "max_characters": 300,
+          "page": 2
+        },
+        "entry_abstract": {
+          "text": "ScamLens 騙譯不替學生判定真偽，而是把可疑訊息拆成原文線索、話術意圖與查證步驟，幫助國中生在害怕或著急時先停下來，不點連結、不交個資，再離開原訊息向可信任大人或165查證。",
+          "max_characters": 100
+        },
+        "required_text": [
+          {
+            "text": "ScamLens 騙譯",
+            "page": 1,
+            "role": "title"
+          },
+          {
+            "text": "一、議題描述與界定",
+            "page": 3,
+            "role": "heading"
+          },
+          {
+            "text": "本提案處理國中生閱讀可疑文字訊息時的判讀問題。",
+            "page": 3,
+            "role": "body"
+          }
+        ],
+        "allow_16pt_main_headings": {
+          "reason": "僅封面輔助競賽名稱的三行為 16 pt；主題仍 24 pt，第三頁起章節與正文仍 14／12 pt。本例外不是主辦對 16 pt 正文的許可。",
+          "texts": [
+            "臺北市115學年度",
+            "智慧城市中的科技與人文",
+            "跨域創新素養競賽"
+          ]
+        }
+      },
+      "artifacts": [
+        {
+          "kind": "editable-master",
+          "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽2/output/competition/ScamLens_初選提案_官方格式待填稿_v0.4.docx",
+          "generation_status": "exists",
+          "validation_status": "document-checks-recorded-named-review-pending",
+          "sha256": "f9c0cb815ac778784549bf522b01757f1387b2df9d13626d83f5af8bedb1e677",
+          "byte_size": 3053356
+        },
+        {
+          "kind": "reading-pdf",
+          "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽2/output/pdf/ScamLens_初選提案_官方格式待填稿_v0.4.pdf",
+          "generation_status": "exists",
+          "validation_status": "document-checks-recorded-named-review-pending",
+          "sha256": "b710f08f6005e69b0928c36491c81ce9b44d25a9020d5d00b8f516637800c134",
+          "page_count": 10,
+          "byte_size": 1067612
+        }
+      ],
+      "source_snapshot": {
+        "status": "frozen-document-pending-team-review",
+        "product_evidence": "Round 43, 2026-09-06 12:32 Asia/Taipei",
+        "evidence_path": "/Users/apple/Documents/ChatGPT/115科技素養比賽2/output/release/round-43-verification.md",
+        "app_counts_in_document": {
+          "unit_passed": 825,
+          "public_browser_passed": 49,
+          "offline_browser_passed": 2
+        },
+        "screenshots_preserved_from": "Round 41；第 7、8 頁圖說已明示；未重畫為新 AI 畫面",
+        "v0_4_change": "六段同步受控跨線索候選、模擬供應商與 Round 43 本機驗證；v0.3 原檔保留歷史。",
+        "artifact_validation_path": "/Users/apple/Documents/ChatGPT/115科技素養比賽2/output/competition/work/render-final-v04/",
+        "validation_summary": {
+          "entry_characters": 90,
+          "abstract_characters": 288,
+          "count_method": "Unicode NFC；只移除 CR/LF；保留空白、英數與標點。原案 89／287 為移除空白的歷史計法，仍符合字數上限。",
+          "native_paragraphs_and_cells": 120,
+          "image_alt_texts": 3,
+          "visual_review_reported_by_original_task": "10 pages reviewed; not repeated by central register",
+          "font_sizes_pt": [12, 14, 16, 24],
+          "font_16pt_scope": "只限封面三行競賽名稱，正文主章節為 14 pt"
+        },
+        "warning": "實際 SDK 搭配模擬供應商，不是已啟用外部模型或真實學習成效。圖片與測試快照分開，網站來源未變不等於永久發布許可。"
+      },
+      "latest_product_gate": {
+        "id": "scamlens-round-43",
+        "date": "2026-09-06",
+        "completed_at": "2026-09-06T12:32:25+08:00",
+        "evidence_path": "/Users/apple/Documents/ChatGPT/115科技素養比賽2/output/release/round-43-verification.md",
+        "verification_scope": "既有本機驗收紀錄已讀取；本共用登錄未重跑",
+        "unit_passed": 825,
+        "unit_test_files": 103,
+        "public_browser_passed": 49,
+        "offline_browser_passed": 2,
+        "browser_retries": 0,
+        "source_digest": "879a5478e1701d644e5b0f09482f8f669d6cd68d7094ff8b8bca293da9d35ed3",
+        "new_capability": "受控跨線索教學解釋候選：模型提出概念 ID 與 canonical evidence 索引；伺服器核對後採固定教學文案，安全分數等結果不變。",
+        "limits": [
+          "本輪未操作 Local／Hosted Supabase 或真實模型；SDK 測試使用模擬供應商回應",
+          "不是正式收案或真人學習成效",
+          "沒有新增部署",
+          "原 gate 短效憑證不是持續有效的發布許可",
+          "四個 Codex 協作教學文案尚待具名真人覆核，不是普遍語意理解保證"
+        ]
+      },
+      "pending_review": [
+        "學生具名貢獻、AI 協作題目與合成素材內容／權利覆核",
+        "學校、國中組暫定資格、團隊、2–4 位學生及適用指導教師",
+        "換電腦或填資料後重新轉 PDF、檢查標楷體及全部 10 頁",
+        "家長／校方適用程序、學生簽名與學校核章",
+        "既有公開網站與未經刊登的承辦書面判定",
+        "v0.4 已同步 Round 43 角色與驗證，Round 41 圖說保留歷史；後續網站更新仍須另行對照",
+        "正式送件前核准、上傳後回讀與回執"
+      ],
+      "submission": {
+        "status": "not-submitted",
+        "receipt": null
+      }
+    },
+    {
+      "project_id": "soundscape",
+      "name": "SoundScape AI 城市聲景偵探",
+      "workspace": "/Users/apple/Documents/ChatGPT/115科技素養比賽3",
+      "category_draft": "科技助力社會創新",
+      "artifact_version": "v0.3",
+      "artifact_index": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/assets/competition/proposal-v0.3.release.json",
+      "document_contract": {
+        "status": "frozen-official-format-draft; named-review-pending",
+        "abstract": {
+          "text": "校園周邊地圖呈現道路，卻難以說明不同時段的聲音如何影響移動感受。我們設計「聲景智探」，以手機記錄十五秒環境聲與相對強度，規劃在Real模式由裝置端YAMNet提出聲源候選，再由學生依現場脈絡修正。Demo分類是可重現的教學模擬，不代表現場AI辨識或田野成果。資料經品質檢查與隱私處理後，以GIS比較地點、時段及固定甲乙路線；通行感受另以經同意的回饋蒐集，不以手機指標代替。Real須先有校方同意、研究告知與驗收，使用相同手機及協定採樣；資料不足就不比較。改善前後的條件須在採樣前固定。手機數值不是法定分貝，也不支持健康判定。目前原型與隔離環境的登入驗證已完成部分工程檢查，正式研究與改善效果仍待驗證。",
+          "max_characters": 300,
+          "page": 2
+        },
+        "entry_abstract": {
+          "text": "我們以手機採集校園聲景，由裝置端AI建議聲源、學生複核，用GIS比較時段及甲乙路線，找出可驗證的改善方向。Demo分類為模擬，Real須經校方同意後實測；手機數值為相對強度，不是法定dB SPL。",
+          "max_characters": 100
+        },
+        "required_text": [
+          {
+            "text": "聲景智探：校園安靜路線共創計畫",
+            "page": 1,
+            "role": "title"
+          },
+          {
+            "text": "一 議題描述與界定",
+            "page": 3,
+            "role": "heading"
+          },
+          {
+            "text": "我們研究臺北市校園周邊安全公開場域的聲景。",
+            "page": 3,
+            "role": "body"
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "kind": "editable-master",
+          "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/output/docx/SoundScape_AI_提案構想書_官方格式待填稿_v0.3.docx",
+          "generation_status": "exists",
+          "validation_status": "document-checks-recorded-named-review-pending",
+          "sha256": "a6350e604227617b25eefae4fb564d96d2b6674535489f957e2f7971471ec0e3",
+          "byte_size": 122639
+        },
+        {
+          "kind": "reading-pdf",
+          "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/output/pdf/SoundScape_AI_提案構想書_官方格式待填稿_v0.3.pdf",
+          "generation_status": "exists",
+          "validation_status": "document-checks-recorded-named-review-pending",
+          "sha256": "b7a9dbc8bee093858383461d911458b566f7f99ef19f6e5c77d2a6c77583f6be",
+          "byte_size": 1002207,
+          "page_count": 10
+        }
+      ],
+      "source_snapshot": {
+        "status": "frozen-document-pending-team-review",
+        "document_date": "2026-09-06",
+        "content_source": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/assets/competition/proposal-v0.3.json",
+        "content_sha256": "04064a9a8ed902af35af9b9c8d527c458ee1e9337e21ca6b5a46593005bc2578",
+        "evidence_manifest": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/assets/competition/proposal-v0.3.release.json",
+        "product_evidence": "791 app / 14 isolated normal Auth and Data API, 2026-09-06; 506 DB prior baseline not rerun",
+        "evidence_path": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/docs/local-data-auth-release-2026-09-06.md",
+        "screenshot_snapshot": "沿用 v0.2 兩張截圖，內容版本凍結 2026-09-05；不是本輪新截圖",
+        "screenshot_sources": [
+          "/Users/apple/Documents/ChatGPT/115科技素養比賽3/assets/competition/proposal/real-access-gate.jpg",
+          "/Users/apple/Documents/ChatGPT/115科技素養比賽3/assets/competition/proposal/collect-safety.jpg"
+        ],
+        "artifact_validation_path": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/assets/competition/proposal-v0.3.structural.json",
+        "validation_summary": {
+          "entry_characters": 98,
+          "abstract_characters": 300,
+          "count_method": "Unicode NFC；只移除 CR/LF；保留空白、英數與標點。",
+          "pages": 10,
+          "image_alt_texts": 2,
+          "original_task_structural_checks": 41,
+          "original_task_fixture_tests": 23,
+          "visual_reviewed_pages": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          "central_visual_review": "主代理重新檢視最終 140 dpi 的 10 頁 PNG；已核對 renderer PDF 和交付 PDF SHA 相同。",
+          "pdf_font": "5 個 BiauKaiTC Type1 子集均實際嵌入；DOCX 不分發系統字型。",
+          "font_sizes_pt": [12, 14, 24]
+        },
+        "warning": "v0.3 已同步目前人機、資料分支及工程證據。舊 XLSX／手冊／submission verifier 未升級，不以其 release_ready 或可送件文字當作人工批准。新文稿並非真實研究、具名覆核或學校核准。"
+      },
+      "latest_product_gate": {
+        "id": "soundscape-local-data-auth-2026-09-06",
+        "date": "2026-09-06",
+        "evidence_path": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/docs/local-data-auth-release-2026-09-06.md",
+        "verification_scope": "既有本機驗收紀錄已讀取；本共用登錄未重跑",
+        "application_passed": 791,
+        "application_test_files": 105,
+        "isolated_auth_data_api_passed": 14,
+        "browser_evidence": "原主流程以合成帳號正常登入、教師事前登錄、刷新找回與學生角色隔離；是人工操作觀察，不稱為無重試自動 E2E。",
+        "database_baseline_rerun": false,
+        "database_evidence_path": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/docs/experiment-recovery-release-2026-09-06.md",
+        "sql_passed": 506,
+        "sql_test_files": 7,
+        "clean_replay_migrations": 9,
+        "overlapping_experiment_connection_cases": 3,
+        "limits": [
+          "前輪乾淨 DB 重播與本輪正常 Auth／Data API 分開；仍不是完整學生採樣碼／同意／麥克風／GPS／Storage HTTP E2E",
+          "原有 DB 的 query-applied 與隔離 DB 完整 history 不可混用",
+          "本輪為隔離合成帳號與桌面 Chromium，尚無真人／實體手機完整 Real E2E",
+          "Preview READY 是建置中繼資料，不是匿名 runtime 驗收",
+          "工程報告不等於文件、學生或校方批准；v0.3 另有文件來源與格式驗收。"
+        ]
+      },
+      "pending_review": [
+        "學生具名貢獻、地圖／模型／音訊／AI 素材授權及內容覆核",
+        "學校、組別、團隊、2–4 位學生及適用指導教師",
+        "家長／校方適用程序、學生簽名與學校核章",
+        "既有 Preview 公開狀態與未經刊登的承辦書面判定",
+        "正式送件前核准、上傳後回讀與回執",
+        "本人資料補齊或修改內容後須另出版本、重新轉檔與逐頁核對；不能沿用舊檔目視紀錄"
+      ],
+      "submission": {
+        "status": "not-submitted",
+        "receipt": null
+      },
+      "historical_artifacts": [
+        {
+          "version": "v0.2",
+          "artifacts": [
+            {
+              "kind": "editable-master",
+              "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/output/docx/SoundScape_AI_提案構想書_初稿_v0.2.docx",
+              "generation_status": "exists",
+              "validation_status": "official-format-alignment-pending",
+              "sha256": "0de9e41f4ca0a1b274c2a94a896a8e2f3832f451888fc2158421ce78e9f4d866",
+              "byte_size": 432909
+            },
+            {
+              "kind": "reading-pdf",
+              "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/output/pdf/SoundScape_AI_提案構想書_初稿_v0.2.pdf",
+              "generation_status": "exists",
+              "validation_status": "official-format-alignment-pending",
+              "sha256": "f43a13e81206949ed74151ce945eae4a0cb1f28b41ffa2b981dc3ca28b1d12ae",
+              "byte_size": 1363782,
+              "page_count": 10
+            }
+          ],
+          "source_snapshot": {
+            "status": "historical-v0.2-not-updated-to-latest-product",
+            "document_date": "2026-09-05",
+            "builder_path": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/scripts/build_competition_proposal.py",
+            "asset_manifest_path": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/assets/competition/build-manifest.json",
+            "exact_application_snapshot": "pending-original-team-confirmation",
+            "warning": "v0.2 未更新為 703 app／506 SQL；現有 builder 的 Kaiti TC、11.2／10.6 pt 正文及部分正黑標題，不等同共同官方格式標準。"
+          }
+        }
+      ],
+      "handoff": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/docs/competition-proposal-v0.3.md"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+project_id = "foodlens-local"
+
+[api]
+port = 55321
+
+[db]
+# Use a project-specific port so FoodLens tests can run beside another local Supabase stack.
+port = 55322
+shadow_port = 55320
+major_version = 17
+
+[db.pooler]
+port = 55329
+
+[studio]
+port = 55323
+
+[local_smtp]
+port = 55324
+
+[analytics]
+port = 55327
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]

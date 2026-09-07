@@ -1,0 +1,18 @@
+{
+  "capturedAt": "2026-09-06T06:22:22.306Z",
+  "buildId": "KR2Kc85SaMYZKF3ksBHBN",
+  "boundary": "Local verification only. Hosted migration, deployment and offline bundle not updated.",
+  "sourceSha256": {
+    "app/(dashboard)/workflow/page.tsx": "4b59e050eab30a65f0ee1f60f4c6b4cbe57ed864a2240df787e663338b9bda17",
+    "components/workflow/feedback-stage.tsx": "1c39ec55e38a4373315e57f2841465fcb7d82f5d6cc38fc1e56e3d77cacd7d65",
+    "components/workflow/decision-stage.tsx": "fa494f9eb338e175efd112b2fb5918dbcd626358252a53f4ef7dc7f04dc16add",
+    "lib/evidence-chain.ts": "f819182134c800370aaca84c42046c9e55b3ef4b5a331d67f2c160abc2055087",
+    "lib/waste-intelligence.ts": "93f19374c40361a452715d97db2ec3efe8a085c6330dbecd3ba1a9f772800ef1",
+    "lib/workflow-draft.ts": "51022ec13b6a582359c2f0d49cedf1e2f83a01d5c5d84b5b6516b38417b887e6",
+    "lib/repositories/supabase.ts": "9a3c57b38f86b52baeae4cae3f2894d399f3c6c4b467a37e9827e669cf00b35e",
+    "supabase/migrations/20260906055734_feedback_collection_contract_v2.sql": "991f744e9b097cfbbfa7b21beaa40f7ec2ca80597695b850ee786de9044036c1",
+    "supabase/tests/evidence_chain.sql": "981cf617ff5cc0775ad4f8841aa4d78004cb9927cace0cc53b9d4577cb182da8",
+    "scripts/verify-feedback-contract-v2.mjs": "12dbdcc196b1835a333f65622a734865add9e5581bc8416e319e96472b15a365",
+    "tests/e2e/workflow-feedback.spec.ts": "3dcf8f63a4abce76c26bc55af71a4e956952cce4682a928d0f3504819b7dfc11"
+  }
+}

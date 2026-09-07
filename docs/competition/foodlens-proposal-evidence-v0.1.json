@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "artifact_version": "v0.1",
+  "frozen_on": "2026-09-06",
+  "status": "artifact-frozen; named-review-pending; not-submitted",
+  "content_source": "docs/competition/foodlens-proposal-v0.1.json",
+  "content_sha256": "a186afdc5cfff95b73c25525841f0415633bf91db15cadb1d0c08c5d1bbf339d",
+  "outputs": {
+    "docx": {
+      "path": "output/competition/FoodLens_初選提案_官方格式待填稿_v0.1.docx",
+      "sha256": "53a344f67fee160845906512548b94aadfda7c36e1c5e168caaefb57f1467ba6",
+      "bytes": 550286
+    },
+    "pdf": {
+      "path": "output/pdf/FoodLens_初選提案_官方格式待填稿_v0.1.pdf",
+      "sha256": "ca65b394bd53ea08dadb9ba706e3705e13e0b18878330c8039ae10db7125104e",
+      "bytes": 1076148,
+      "pages": 10
+    }
+  },
+  "validation": {
+    "date": "2026-09-06",
+    "native_docx_paragraphs_and_cells": 146,
+    "page_specific_ledger_entries": 147,
+    "image_alt_texts": 2,
+    "abstract_characters": 286,
+    "entry_characters": 95,
+    "font": "BiauKaiTC-Regular / macOS 標楷體-繁; all PDF subsets embedded, DOCX fonts not embedded",
+    "font_sizes_pt": [12, 14, 24],
+    "visual_reviewed_pages": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "machine_report": "output/competition/work/foodlens-v01/artifact-check.json",
+    "visual_review": "output/competition/work/foodlens-v01/visual-review.json",
+    "source_ledger": "output/competition/work/foodlens-v01/source-ledger.json",
+    "renderer_provenance": "output/competition/work/foodlens-v01/render-provenance.json",
+    "boundary": "不是學生具名覆核、校方核准、真實減廢成效、PDF/UA認證或送件回執"
+  },
+  "evidence_files": [
+    {
+      "path": "docs/audits/2026-09-06-product-round9-readiness/AUDIT.md",
+      "sha256": "b25e1539373d1e1ab741ceb9ae76ea82eff472515d6b2db20bac410e568e908c",
+      "scope": "Round9 application:400unit/112E2E/72conditional skips; 0retry; no DB rerun"
+    },
+    {
+      "path": "docs/audits/2026-09-06-product-round8/AUDIT.md",
+      "sha256": "dfc01bf9bef1c674f50f7f3106f3d616519a169eb08b4cc84dedc19bcb965e76",
+      "scope": "Round8 database baseline:21migrations/276pgTAP"
+    },
+    {
+      "path": "lib/seed.ts",
+      "sha256": "ebb3cc24ec7d21293ac194ebc0df21e72bff7dc8643103322dd0fc63fed29556",
+      "scope": "v18 fixed Demo:48meals/96scans/12dates; not field data"
+    },
+    {
+      "path": "lib/analysis.ts",
+      "sha256": "d4fc95deaf18d68ef1949c5aaadcac873fd04b5c590998212cd33bdbe7c93ae2",
+      "scope": "Weighted rates, independent-date insight thresholds, non-causal comparison"
+    },
+    {
+      "path": "lib/prediction.ts",
+      "sha256": "0dd2f01e0fa6d0c07e787185c240aafc7936178317a883172d916aa97932b1d2",
+      "scope": "180days anchored to latest meal;3-8independent dates;75percent factor;15/8/5percent caps"
+    },
+    {
+      "path": "lib/waste-intelligence.ts",
+      "sha256": "2cad96104f03b9b882c5c25c0af784d81996a50ebce0927799348dd0982081cf",
+      "scope": "Five waste sources, gross/tare/net and responsibilities"
+    },
+    {
+      "path": "lib/menu-intelligence.ts",
+      "sha256": "439ea63b0285b259fe8319f882a645cef90417d1907181d3fad4946ac5788272",
+      "scope": "Original menu text and candidates; servedOn manually supplied"
+    },
+    {
+      "path": "lib/repositories/supabase.ts",
+      "sha256": "4400bc415b41fb822db04c6ef3ff0ef3ac446196917c5052efec142b4050d640",
+      "scope": "Cloud teacher/admin; not eight deployed login portals"
+    },
+    {
+      "path": "app/api/ai/analyze/route.ts",
+      "sha256": "9b736b3e394a5fd417598e44f4dbd86adeb8c3ed046971df0c912ea9a136801d",
+      "scope": "Configured remote provider can receive image; not always stays on campus"
+    },
+    {
+      "path": "docs/GENERATED_ASSETS.md",
+      "sha256": "92559303271de6202507d71d68134fe68125f627ac5c7f50b38826c5c053d6c4",
+      "scope": "AI-generated trays/menu/brand image; native UI screenshots are not field observations"
+    }
+  ],
+  "demo_comparison": {
+    "baseline": {
+      "start": "2026-08-24",
+      "end": "2026-08-28",
+      "meal_count": 8,
+      "independent_dates": 2,
+      "supplied_g": 55120,
+      "remaining_g": 14914
+    },
+    "after": {
+      "start": "2026-10-14",
+      "end": "2026-10-16",
+      "meal_count": 8,
+      "independent_dates": 2,
+      "supplied_g": 57160,
+      "remaining_g": 10879
+    },
+    "display": {
+      "baseline_percent": 27.1,
+      "after_percent": 19.0,
+      "percentage_point_reduction": 8.0,
+      "relative_improvement_percent": 29.7
+    },
+    "formula": "Ratios computed from raw grams, never subtract rounded display percentages",
+    "causal_claim_allowed": false,
+    "real_research_result": false
+  },
+  "named_student_review": "pending",
+  "school_approval": "pending",
+  "submission_receipt": null,
+  "later_source_drift": "另版更新與重新驗收；不將後續網站數字默認為本文件證據"
+}

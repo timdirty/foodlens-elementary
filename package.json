@@ -1,0 +1,63 @@
+{
+  "name": "foodlens-app",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "package:offline": "node scripts/package-offline.mjs && npm run test:offline-tools && node scripts/verify-offline-bundle.mjs",
+    "package:offline:from-build": "node scripts/package-offline.mjs --skip-build && npm run test:offline-tools && node scripts/verify-offline-bundle.mjs",
+    "verify:offline": "node scripts/verify-offline-bundle.mjs",
+    "test:offline-tools": "node --test scripts/offline-tools.node-test.mjs",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:watch": "vitest",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "5.2.2",
+    "@noble/hashes": "^2.4.0",
+    "@supabase/ssr": "0.8.0",
+    "@supabase/supabase-js": "2.112.4",
+    "clsx": "2.1.1",
+    "date-fns": "4.1.0",
+    "dexie": "4.2.1",
+    "lucide-react": "0.542.0",
+    "motion": "13.1.1",
+    "next": "16.3.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-hook-form": "7.63.0",
+    "react-markdown": "10.1.0",
+    "recharts": "3.10.1",
+    "server-only": "^0.0.1",
+    "sonner": "2.0.7",
+    "tailwind-merge": "3.3.1",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.10.2",
+    "@playwright/test": "1.62.1",
+    "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "6.8.0",
+    "@testing-library/react": "16.3.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.3",
+    "fake-indexeddb": "6.2.4",
+    "jsdom": "26.1.0",
+    "prettier": "^3.9.6",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vitest": "3.2.7"
+  }
+}

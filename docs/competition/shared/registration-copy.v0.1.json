@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "version": "0.1",
+  "date": "2026-09-06",
+  "status": "paste-ready-draft-pending-team-review; not-filled-or-submitted",
+  "entry_text_source": "submission-register.json projects[].document_contract.entry_abstract.text",
+  "count_method": "Unicode NFC；只移除 CR/LF，保留空白、英數與標點；最後仍以主辦／平台規則為準。",
+  "official_blank_form": "output/pdf/115_跨域創新素養競賽_官方報名空白表.pdf",
+  "projects": [
+    {
+      "project_id": "foodlens",
+      "entry_title_draft": "FoodLens 食光偵探：AI 校園剩食分析與智慧供餐系統",
+      "ai_used": true,
+      "ai_tools_short": "OpenAI Codex、OpenAI 圖像生成工具",
+      "ai_use_short": "協助程式與測試、文書、示範及品牌圖像；具名覆核待完成。",
+      "ai_use_expanded": "OpenAI Codex 協助需求、架構、程式與測試、提案文字及排版；圖像生成工具製作三張示範餐盤、一張紙菜單與品牌視覺。Mock 為固定規則，不是模型準確度證據；生成圖片不當作研究樣本。學生、教師及校方應核對來源、內容、修正紀錄與供餐決策，具名工作及素材權利覆核仍待完成。",
+      "source_refs": [
+        {
+          "path": "docs/competition/foodlens-proposal-v0.1.json",
+          "locator": "title, subtitle, abstract_short; page 10 disclosure"
+        },
+        {
+          "path": "docs/competition/115-entry-initial-plan.md",
+          "locator": "5. 報名文字初稿／AI 使用揭露"
+        }
+      ],
+      "revision_note": "理念沿用 v0.1 母稿原文；欄位短版另摘錄製作用途。未列不可確認的底層模型版本。",
+      "named_review": "pending"
+    },
+    {
+      "project_id": "scamlens",
+      "entry_title_draft": "ScamLens 騙譯：國中生的訊息判讀與防詐練習",
+      "ai_used": true,
+      "ai_tools_short": "OpenAI Codex、OpenAI ImageGen",
+      "ai_use_short": "協助程式與測試、合成案例與題目、文案與圖像；具名覆核待完成。",
+      "ai_use_expanded": "OpenAI Codex 協助程式、測試、案例與題目初稿、介面及提案文案；OpenAI ImageGen 生成與編修品牌視覺、圖示及插畫。人物與案例為合成，40 位學生為模擬資料，尚無學習成效結論。Round 43 的模型候選只能經伺服器核對後加入預編教學解說，不能改寫分數、騙譯及安全建議；測試搭配模擬供應商，外部 AI 未啟用。逐則真人審閱、素材權利及學生貢獻仍待具名覆核。",
+      "source_refs": [
+        {
+          "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽2/output/competition/ScamLens_報名文案與送件檢核_v0.1.md",
+          "locator": "100 字提案理念"
+        },
+        {
+          "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽2/output/competition/ScamLens_提案素材揭露_v0.1.md",
+          "locator": "可直接轉填報名表的短版說明"
+        },
+        {
+          "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽2/output/competition/ScamLens_官方格式稿交接_v0.4.md",
+          "locator": "第 8 頁 Round 43 AI 角色與未啟用邊界"
+        }
+      ],
+      "revision_note": "理念原文未改；共用方法計 90 字，舊稿去空白計 89 字。AI 補充依 v0.4，而非 v0.3 舊契約。",
+      "named_review": "pending"
+    },
+    {
+      "project_id": "soundscape",
+      "entry_title_draft": "聲景智探：校園安靜路線共創計畫",
+      "ai_used": true,
+      "ai_tools_short": "OpenAI ChatGPT／Codex",
+      "ai_use_short": "協助需求、程式與測試、文案及排版；具名覆核待完成。",
+      "ai_use_expanded": "OpenAI ChatGPT／Codex 協助需求、程式與測試、文書結構及排版。產品 Real 設計另採 Google YAMNet 提供裝置端聲源候選，再由人類複核；Demo 分類為可重現教學模擬。準確度評估另用經同意保留原音、雙人盲標及教師裁決的 Top-1 主類別子集，不表示全部資料已完成標註或已有在地準確率。手機指標不是法定 dB SPL 或健康判定。兩張提案截圖沿用 09-05 歷史版本，模型、地圖與音訊來源及學生貢獻仍待具名覆核。",
+      "source_refs": [
+        {
+          "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/assets/competition/proposal-v0.3.json",
+          "locator": "idea／abstract／第 7、10 頁模型角色與 AI 揭露"
+        },
+        {
+          "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/docs/competition-proposal-v0.3.md",
+          "locator": "文件版本與已完成的結構、目視檢查"
+        },
+        {
+          "path": "/Users/apple/Documents/ChatGPT/115科技素養比賽3/docs/local-data-auth-release-2026-09-06.md",
+          "locator": "791／14 的局部工程證據與 Real 未驗收範圍"
+        }
+      ],
+      "revision_note": "98 字理念已改用 v0.3 原文，明說 Demo 分類為模擬；300 字摘要同版。正式研究、學校同意及學生具名覆核仍待完成，舊 v0.2 截圖不是新採樣證據。",
+      "named_review": "pending"
+    }
+  ]
+}

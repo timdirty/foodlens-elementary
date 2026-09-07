@@ -1,0 +1,11 @@
+.next
+.vercel
+node_modules
+output
+dist
+playwright-report
+test-results
+.playwright-cli
+package-lock.json
+public
+/supabase/
