@@ -15,6 +15,7 @@ import {
 import { useFoodLens } from "@/components/data-provider";
 import { ComparisonBarChart } from "@/components/charts/lab-charts";
 import { TrendChart } from "@/components/charts/dashboard-charts";
+import { LunchTimeMachine } from "@/components/game/lunch-time-machine";
 import {
   EmptyState,
   LoadingState,
@@ -233,6 +234,7 @@ export default function LabPage() {
         description="圖表統一採加權剩食率；文字洞察由資料與門檻即時計算，不預先寫死。"
         icon={BarChart3}
       />
+      <LunchTimeMachine />
       <div className="method-banner">
         <FlaskConical size={20} />
         <div>

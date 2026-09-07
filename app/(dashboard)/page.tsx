@@ -16,6 +16,7 @@ import { EmptyState, LoadingState } from "@/components/ui/page";
 import { AnimatedNumber } from "@/components/ui/animated-number";
 import { DetectiveRankCard } from "@/components/game/detective-rank-card";
 import { FoodRescueFun } from "@/components/game/food-rescue-fun";
+import { CampusAdventureMap } from "@/components/game/campus-adventure-map";
 import {
   categoryRemainingShares,
   className,
@@ -188,6 +189,7 @@ export default function DashboardPage() {
         </div>
         <ClosedLoopCase snapshot={scoped} mode={mode} />
       </section>
+      <CampusAdventureMap />
       {mode === "demo-local" && (
         <aside className="demo-evidence-banner" aria-label="示範資料說明">
           <FileCheck2 size={19} aria-hidden="true" />

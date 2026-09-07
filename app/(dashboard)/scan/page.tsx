@@ -41,6 +41,7 @@ import {
 } from "@/components/ui/page";
 import { ScanStorageLocation } from "@/components/scan-storage-location";
 import { ScanDraftRecovery } from "@/components/scan-draft-recovery";
+import { DetectiveNotebookInspector } from "@/components/game/detective-notebook-inspector";
 import {
   aiAnalysisSchema,
   createManualFoodAnalysis,
@@ -1389,6 +1390,7 @@ function ScanWorkspace({
             </div>
           </Panel>
           <aside className="preview-panel">
+            <DetectiveNotebookInspector />
             {previewUrl ? (
               <div className="image-frame">
                 <Image
